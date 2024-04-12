@@ -1,6 +1,6 @@
-# Currently Used Terminology for Global Routing Operation
+# Currently Used Terminology in Global Routing Operations
 
-This is the working area for the individual Internet-Draft, "Currently Used Terminology for Global Routing Operation".
+This is the working area for the individual Internet-Draft, "Currently Used Terminology in Global Routing Operations".
 
 * [Editor's Copy](https://ichdasich.github.io/draft-routing-operations-terminology/#go.draft-fiebig-grow-routing-operations-terminology.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-fiebig-grow-routing-operations-terminology)
