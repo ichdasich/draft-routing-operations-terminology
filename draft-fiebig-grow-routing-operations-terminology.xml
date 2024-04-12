@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<?xml-model href="rfc7991bis.rnc"?>
+<!DOCTYPE rfc [
+        <!ENTITY nbsp    "&#160;">
+        <!ENTITY zwsp   "&#8203;">
+        <!ENTITY nbhy   "&#8209;">
+        <!ENTITY wj     "&#8288;">
+]>
+<rfc xmlns:xi="http://www.w3.org/2001/XInclude"
+     ipr="trust200902" submissionType="IETF" category="info" consensus="true" version="3" docName="draft-fiebig-grow-routing-operations-terminology-latest">
+    <front>
+        <title abbrev="BGP TERMS">Currently Used Terminology for Global Routing Operation</title>
+        <seriesInfo name="Internet-Draft" status="standard" value="draft-fiebig-grow-routing-operations-terminology-latest"/>
+        <author fullname="Tobias Fiebig" initials="T." surname="Fiebig">
+            <organization abbrev="MPI-INF">Max-Planck-Institut fuer Informatik</organization>
+            <address>
+                <postal>
+                    <street>Campus E14</street>
+                    <city>Saarbruecken</city>
+                    <code>66123</code>
+                    <country>Germany</country>
+                </postal>
+                <phone>+49 681 9325 3527</phone>
+                <email>tfiebig@mpi-inf.mpg.de</email>
+            </address>
+        </author>
+        <area>ops</area>
+        <workgroup>Global Routing Operations</workgroup>
+
+        <abstract>
+            <t>
+                Operating the global routing ecosystem entails a divers set of interacting components, while operational practice evolved over time.
+                In that time, terms emerged, disappeared, and sometimes changed their meaning.
+            </t>
+            <t>
+                To aid operators and implementers in reading contempory drafts, this document provides an overview of terms and abreviations used in the global routing operations community.
+                The document explicitly does not serve as an authoritative source of correct terminology, but instead strives to provide an overview of practice.
+            </t>
+        </abstract>
+    </front>
+
+    <middle>
+        <section  anchor="sec-introduction">
+            <name>Introduction</name>
+            <t>
+                The practical operation of the global routing ecosystem entails a divers set of interacting components, while operational practice evolved over time.
+                In that time, terms emerged, disappeared, and sometimes changed their meaning.
+            </t>
+            <t>
+                To aid operators and implementers in reading contempory drafts, this document provides an overview of terms and abreviations used in the global routing operations community.
+            </t>
+            <section>
+                <name>Requirements Language</name>
+                <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
+                  "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT
+                  RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be
+                  interpreted as described in BCP 14 <xref target="RFC2119"/>
+                  <xref target="RFC8174"/> when, and only when, they appear in
+                  all capitals, as shown here.</t>
+            </section>
+        </section>
+
+        <section  anchor="sec-scope-of-the-document">
+            <name>Scope of the Document</name>
+            <t>
+                This document is explicitly descriptive, i.e., provides a collection of terms that are currently being used along with the context and definitions with which their use was observed.
+                It is not an authoritative source of terminology, and only provides a snapshot of how certain terms have been used at the time of publication.
+                As such, any terms and summaries in this document are subject to change.
+            </t>
+        </section>
+        <section  anchor="sec-definitions-and-acronyms">
+            <name>Definitions and Acronyms</name>
+            <t>
+                The following terms are used in this document:
+            </t>
+            <dl newline="true" spacing="normal">
+                <dt>ACL:</dt>
+                <dd>Access Control List</dd>
+
+                <dt>ASN:</dt>
+                <dd>Autonomous System Number</dd>
+
+                <dt>DFZ:</dt>
+                <dd>Default Free Zone</dd>
+
+                <dt>GRT:</dt>
+                <dd>Global Routing Table</dd>
+
+                <dt>IRR:</dt>
+                <dd>Internet Routing Registry</dd>
+
+                <dt>IXP:</dt>
+                <dd>Internet Exchange Point</dd>
+
+                <dt>LIR:</dt>
+                <dd>Local Internet Registry</dd>
+
+                <dt>NLRI:</dt>
+                <dd>Network Layer Reachability Information</dd>
+
+                <dt>OTC:</dt>
+                <dd>Only To Customer BGP Attribute</dd>
+
+                <dt>PMTUD:</dt>
+                <dd>Path MTU Discovery</dd>
+
+                <dt>uRPF:</dt>
+                <dd>Unicast Reverse Path Forwarding</dd>
+            </dl>
+            <t>
+                In addition to the list above, the following terms are used with a specific meaning.
+            </t>
+            <dl newline="true" spacing="normal">
+                <dt>BGP Speaker:</dt>
+                <dd>A device exchanging routes with other BGP speakers using the BGP protocol</dd>
+
+                <dt>BGP Neighbor:</dt>
+                <dd>Also just 'Neighbor'. Two BGP speakers that communicate using the BGP protocols are neighbors.</dd>
+
+                <dt>Cone:</dt>
+                <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
+
+                <dt>Downstream:</dt>
+                <dd>In a direct relationship between two ASes the one receiving upstream from the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
+
+                <dt>Exporting a Prefix:</dt>
+                <dd>Advertising a prefix to a neighbor.</dd>
+
+                <dt>Full Table:</dt>
+                <dd>A routing table containing a route to all prefixes in the GRT but not the default route.</dd>
+
+                <dt>Importing a Prefix:</dt>
+                <dd>Accepting a prefix advertised by a neighbor and considering it for route selection and import into the local AS' routing table.</dd>
+
+                <dt>Network edge:</dt>
+                <dd>Last routers under the control of an operator.</dd>
+
+                <dt>Mutual Transit:</dt>
+                <dd>When two directly connected ASes both advertise a BGP fulltable to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
+
+                <dt>Upstream:</dt>
+                <dd>In a direct relationship between two ASes the one providing upstream to the other. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
+
+                <dt>Operator:</dt>
+                <dd>Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.</dd>
+
+                <dt>Originating a Prefix:</dt>
+                <dd>Advertising a prefix with an empty AS-Path.</dd>
+
+                <dt>Peer:</dt>
+                <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
+
+                <dt>Providing Transit:</dt>
+                <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
+
+                <dt>Providing Upstream:</dt>
+                <dd>See: Providing Transit</dd>
+
+                <dt>Router:</dt>
+                <dd>In this document, router always refers to a BGP speaker.</dd>
+
+            </dl>
+        </section>
+
+        <section  anchor="sec-iana-considerations">
+            <name>IANA Considerations</name>
+            <t>
+                This document does not require any IANA actions.
+            </t>
+        </section>
+        <section  anchor="sec-security-considerations">
+            <name>Security Considerations</name>
+            <t>
+                This document describes currently used terminology and does not make recommendations.
+                As such, it does not have security considerations.
+            </t>
+        </section>
+    </middle>
+
+    <back>
+        <references>
+            <name>References</name>
+            <references>
+                <name>Normative References</name>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.2119.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.8174.xml"/>
+            </references>
+            <references>
+                <name>Informative References</name>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7454.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.9234.xml"/>
+                <reference anchor="I-D.ietf-sidrops-aspa-verification" target="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-16">
+                    <front>
+                        <title>BGP AS_PATH Verification Based on Autonomous System Provider Authorization (ASPA) Objects</title>
+                        <author initials="A." surname="Azimov" fullname="Alexander Azimov">
+                            <organization>Yandex</organization>
+                        </author>
+                        <author initials="E." surname="Bogomazov" fullname="Eugene Bogomazov">
+                            <organization>Qrator Labs</organization>
+                        </author>
+                        <author initials="R." surname="Bush" fullname="Randy Bush">
+                            <organization>Internet Initiative Japan and Arrcus, Inc.</organization>
+                        </author>
+                        <author initials="K." surname="Patel" fullname="Keyur Patel">
+                            <organization>Arrcus</organization>
+                        </author>
+                        <author initials="J." surname="Snijders" fullname="Job Snijders">
+                            <organization>Fastly</organization>
+                        </author>
+                        <author initials="K." surname="Sriram" fullname="Kotikalapudi Sriram">
+                            <organization>USA National Institute of Standards and Technology</organization>
+                        </author>
+                        <date month="August" day="29" year="2023"/>
+                    </front>
+                    <seriesInfo name="Internet-Draft" value="draft-ietf-sidrops-aspa-verification-16"/>
+                </reference>
+
+            </references>
+        </references>
+        <section anchor="acknowledgements" numbered="false" toc="default">
+            <name>Acknowledgements</name>
+            <t>
+                This document is based on <xref target="RFC7454" format="default"/> and we thank the original authors for their work.
+            </t>
+            <t>
+                We thank the following people for reviewing this draft and suggesting changes:
+            </t>
+            <ul spacing="normal">
+                <li>
+                    Gert Doerring
+                </li>
+                <li>
+                    Jeff Haas
+                </li>
+                <li>
+                    Nick Hilliard
+                </li>
+                <li>
+                    Geng Nan
+                </li>
+                <li>
+                    Martin Pels
+                </li>
+                <li>
+                    Job Snijders
+                </li>
+                <li>
+                    Berislav Todorovic
+                </li>
+            </ul>
+        </section>
+    </back>
+</rfc>
