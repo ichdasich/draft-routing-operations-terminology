@@ -1,0 +1,280 @@
+
+
+
+
+Global Routing Operations                                      T. Fiebig
+Internet-Draft                                                   MPI-INF
+Intended status: Informational                             12 April 2024
+Expires: 14 October 2024
+
+
+        Currently Used Terminology for Global Routing Operation
+        draft-fiebig-grow-routing-operations-terminology-latest
+
+Abstract
+
+   Operating the global routing ecosystem entails a divers set of
+   interacting components, while operational practice evolved over time.
+   In that time, terms emerged, disappeared, and sometimes changed their
+   meaning.
+
+   To aid operators and implementers in reading contempory drafts, this
+   document provides an overview of terms and abreviations used in the
+   global routing operations community.  The document explicitly does
+   not serve as an authoritative source of correct terminology, but
+   instead strives to provide an overview of practice.
+
+Status of This Memo
+
+   This Internet-Draft is submitted in full conformance with the
+   provisions of BCP 78 and BCP 79.
+
+   Internet-Drafts are working documents of the Internet Engineering
+   Task Force (IETF).  Note that other groups may also distribute
+   working documents as Internet-Drafts.  The list of current Internet-
+   Drafts is at https://datatracker.ietf.org/drafts/current/.
+
+   Internet-Drafts are draft documents valid for a maximum of six months
+   and may be updated, replaced, or obsoleted by other documents at any
+   time.  It is inappropriate to use Internet-Drafts as reference
+   material or to cite them other than as "work in progress."
+
+   This Internet-Draft will expire on 14 October 2024.
+
+Copyright Notice
+
+   Copyright (c) 2024 IETF Trust and the persons identified as the
+   document authors.  All rights reserved.
+
+   This document is subject to BCP 78 and the IETF Trust's Legal
+   Provisions Relating to IETF Documents (https://trustee.ietf.org/
+   license-info) in effect on the date of publication of this document.
+   Please review these documents carefully, as they describe your rights
+   and restrictions with respect to this document.  Code Components
+   extracted from this document must include Revised BSD License text as
+   described in Section 4.e of the Trust Legal Provisions and are
+   provided without warranty as described in the Revised BSD License.
+
+Table of Contents
+
+   1.  Introduction
+     1.1.  Requirements Language
+   2.  Scope of the Document
+   3.  Definitions and Acronyms
+   4.  IANA Considerations
+   5.  Security Considerations
+   6.  References
+     6.1.  Normative References
+     6.2.  Informative References
+   Acknowledgements
+   Author's Address
+
+1.  Introduction
+
+   The practical operation of the global routing ecosystem entails a
+   divers set of interacting components, while operational practice
+   evolved over time.  In that time, terms emerged, disappeared, and
+   sometimes changed their meaning.
+
+   To aid operators and implementers in reading contempory drafts, this
+   document provides an overview of terms and abreviations used in the
+   global routing operations community.
+
+1.1.  Requirements Language
+
+   The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT",
+   "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and
+   "OPTIONAL" in this document are to be interpreted as described in BCP
+   14 [RFC2119] [RFC8174] when, and only when, they appear in all
+   capitals, as shown here.
+
+2.  Scope of the Document
+
+   This document is explicitly descriptive, i.e., provides a collection
+   of terms that are currently being used along with the context and
+   definitions with which their use was observed.  It is not an
+   authoritative source of terminology, and only provides a snapshot of
+   how certain terms have been used at the time of publication.  As
+   such, any terms and summaries in this document are subject to change.
+
+3.  Definitions and Acronyms
+
+   The following terms are used in this document:
+
+   ACL:
+      Access Control List
+
+   ASN:
+      Autonomous System Number
+
+   DFZ:
+      Default Free Zone
+
+   GRT:
+      Global Routing Table
+
+   IRR:
+      Internet Routing Registry
+
+   IXP:
+      Internet Exchange Point
+
+   LIR:
+      Local Internet Registry
+
+   NLRI:
+      Network Layer Reachability Information
+
+   OTC:
+      Only To Customer BGP Attribute
+
+   PMTUD:
+      Path MTU Discovery
+
+   uRPF:
+      Unicast Reverse Path Forwarding
+
+   In addition to the list above, the following terms are used with a
+   specific meaning.
+
+   BGP Speaker:
+      A device exchanging routes with other BGP speakers using the BGP
+      protocol
+
+   BGP Neighbor:
+      Also just 'Neighbor'.  Two BGP speakers that communicate using the
+      BGP protocols are neighbors.
+
+   Cone:
+      The set of ASes who are either direct downstreams of an AS, or in
+      the cone of any of those ASes; Depending on the context this also
+      includes the joint set of prefixes that may be originated by ASes
+      in a cone.
+
+   Downstream:
+      In a direct relationship between two ASes the one receiving
+      upstream from the other.  (See: [RFC9234], also known as the
+      customer in a customer-provider relationship.)
+
+   Exporting a Prefix:
+      Advertising a prefix to a neighbor.
+
+   Full Table:
+      A routing table containing a route to all prefixes in the GRT but
+      not the default route.
+
+   Importing a Prefix:
+      Accepting a prefix advertised by a neighbor and considering it for
+      route selection and import into the local AS' routing table.
+
+   Network edge:
+      Last routers under the control of an operator.
+
+   Mutual Transit:
+      When two directly connected ASes both advertise a BGP fulltable to
+      each other.  (See: [I-D.ietf-sidrops-aspa-verification])
+
+   Upstream:
+      In a direct relationship between two ASes the one providing
+      upstream to the other.  (See: [RFC9234], also known as the
+      provider in a customer-provider relationship.)
+
+   Operator:
+      Individual, group of people, or organizational unit responsible
+      for operating BGP speakers, i.e., making administrative changes,
+      as well as defining and setting policies for all BGP speakers
+      within an organization.
+
+   Originating a Prefix:
+      Advertising a prefix with an empty AS-Path.
+
+   Peer:
+      Two directly connected ASes who only advertise routes they
+      originate or learned from their downstreams to each other.  (See:
+      [RFC9234])
+
+   Providing Transit:
+      Forwarding packets destined for addresses in an advertised prefix,
+      while advertising a full BGP table or default route to the
+      neighbor.
+
+   Providing Upstream:
+      See: Providing Transit
+
+   Router:
+      In this document, router always refers to a BGP speaker.
+
+4.  IANA Considerations
+
+   This document does not require any IANA actions.
+
+5.  Security Considerations
+
+   This document describes currently used terminology and does not make
+   recommendations.  As such, it does not have security considerations.
+
+6.  References
+
+6.1.  Normative References
+
+   [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
+              Requirement Levels", BCP 14, RFC 2119,
+              DOI 10.17487/RFC2119, March 1997,
+              <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC8174]  Leiba, B., "Ambiguity of Uppercase vs Lowercase in RFC
+              2119 Key Words", BCP 14, RFC 8174, DOI 10.17487/RFC8174,
+              May 2017, <https://www.rfc-editor.org/info/rfc8174>.
+
+6.2.  Informative References
+
+   [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
+              and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
+              February 2015, <https://www.rfc-editor.org/info/rfc7454>.
+
+   [RFC9234]  Azimov, A., Bogomazov, E., Bush, R., Patel, K., and K.
+              Sriram, "Route Leak Prevention and Detection Using Roles
+              in UPDATE and OPEN Messages", RFC 9234,
+              DOI 10.17487/RFC9234, May 2022,
+              <https://www.rfc-editor.org/info/rfc9234>.
+
+   [I-D.ietf-sidrops-aspa-verification]
+              Azimov, A., Bogomazov, E., Bush, R., Patel, K., Snijders,
+              J., and K. Sriram, "BGP AS_PATH Verification Based on
+              Autonomous System Provider Authorization (ASPA) Objects",
+              Work in Progress, Internet-Draft, draft-ietf-sidrops-aspa-
+              verification-16, 29 August 2023,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-
+              aspa-verification-16>.
+
+Acknowledgements
+
+   This document is based on [RFC7454] and we thank the original authors
+   for their work.
+
+   We thank the following people for reviewing this draft and suggesting
+   changes:
+
+   *  Gert Doerring
+
+   *  Jeff Haas
+
+   *  Nick Hilliard
+
+   *  Geng Nan
+
+   *  Martin Pels
+
+   *  Job Snijders
+
+   *  Berislav Todorovic
+
+Author's Address
+
+   Tobias Fiebig
+   Max-Planck-Institut fuer Informatik
+   Campus E14
+   66123 Saarbruecken
+   Germany
+   Phone: +49 681 9325 3527
+   Email: tfiebig@mpi-inf.mpg.de
