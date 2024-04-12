@@ -8,7 +8,7 @@ Intended status: Informational                             12 April 2024
 Expires: 14 October 2024
 
 
-        Currently Used Terminology for Global Routing Operation
+        Currently Used Terminology in Global Routing Operations
         draft-fiebig-grow-routing-operations-terminology-latest
 
 Abstract
