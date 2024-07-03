@@ -33,7 +33,7 @@
                 In that time, terms emerged, disappeared, and sometimes changed their meaning.
             </t>
             <t>
-                To aid operators and implementers in reading contempory drafts, this document provides an overview of terms and abreviations used in the global routing operations community.
+                To aid operators and implementers in reading contemporary drafts, this document provides an overview of terms and abbreviations used in the global routing operations community.
                 The document explicitly does not serve as an authoritative source of correct terminology, but instead strives to provide an overview of practice.
             </t>
         </abstract>
@@ -47,7 +47,7 @@
                 In that time, terms emerged, disappeared, and sometimes changed their meaning.
             </t>
             <t>
-                To aid operators and implementers in reading contempory drafts, this document provides an overview of terms and abreviations used in the global routing operations community.
+                To aid operators and implementers in reading contemporary drafts, this document provides an overview of terms and abbreviations used in the global routing operations community.
             </t>
             <section>
                 <name>Requirements Language</name>
@@ -189,7 +189,7 @@
                 <name>Informative References</name>
                 <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7454.xml"/>
                 <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.9234.xml"/>
-                <reference anchor="I-D.ietf-sidrops-aspa-verification" target="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-16">
+                <reference anchor="I-D.ietf-sidrops-aspa-verification" target="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-17">
                     <front>
                         <title>BGP AS_PATH Verification Based on Autonomous System Provider Authorization (ASPA) Objects</title>
                         <author initials="A." surname="Azimov" fullname="Alexander Azimov">
@@ -212,7 +212,7 @@
                         </author>
                         <date month="August" day="29" year="2023"/>
                     </front>
-                    <seriesInfo name="Internet-Draft" value="draft-ietf-sidrops-aspa-verification-16"/>
+                    <seriesInfo name="Internet-Draft" value="draft-ietf-sidrops-aspa-verification-17"/>
                 </reference>
 
             </references>
