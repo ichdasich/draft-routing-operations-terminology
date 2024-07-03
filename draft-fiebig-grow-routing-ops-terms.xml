@@ -7,10 +7,10 @@
         <!ENTITY wj     "&#8288;">
 ]>
 <rfc xmlns:xi="http://www.w3.org/2001/XInclude"
-     ipr="trust200902" submissionType="IETF" category="info" consensus="true" version="3" docName="draft-fiebig-grow-routing-operations-terminology-latest">
+     ipr="trust200902" submissionType="IETF" category="info" consensus="true" version="3" docName="draft-fiebig-grow-routing-ops-terms-latest">
     <front>
         <title abbrev="BGP TERMS">Currently Used Terminology in Global Routing Operations</title>
-        <seriesInfo name="Internet-Draft" status="standard" value="draft-fiebig-grow-routing-operations-terminology-latest"/>
+        <seriesInfo name="Internet-Draft" status="standard" value="draft-fiebig-grow-routing-ops-terms-latest"/>
         <author fullname="Tobias Fiebig" initials="T." surname="Fiebig">
             <organization abbrev="MPI-INF">Max-Planck-Institut fuer Informatik</organization>
             <address>
