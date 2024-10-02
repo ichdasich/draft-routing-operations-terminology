@@ -49,6 +49,15 @@
             <t>
                 To aid operators and implementers in reading contemporary drafts, this document provides an overview of terms and abbreviations used in the global routing operations community.
             </t>
+            <section  anchor="ssec-feedback">
+                <name>Providing input on the draft:</name>
+                <t>
+                    While this draft is being edited, you may provide suggestions for additional abbreviations and terms to be included at:
+                </t>
+                <t>
+                    https://files.measurement.network/apps/forms/s/CMXjrtCPD8QyG6CAWmSLmg4y
+                </t>
+            </section>
             <section>
                 <name>Requirements Language</name>
                 <t>The key words "MUST", "MUST NOT", "REQUIRED", "SHALL",
@@ -68,10 +77,10 @@
                 As such, any terms and summaries in this document are subject to change.
             </t>
         </section>
-        <section  anchor="sec-definitions-and-acronyms">
-            <name>Definitions and Acronyms</name>
+        <section  anchor="sec-acronyms">
+            <name>Acronyms</name>
             <t>
-                The following terms are used in this document:
+                The following acronymes are commonly used in the context of global routing operations:
             </t>
             <dl newline="true" spacing="normal">
                 <dt>ACL:</dt>
@@ -95,6 +104,12 @@
                 <dt>LIR:</dt>
                 <dd>Local Internet Registry</dd>
 
+                <dt>NIR:</dt>
+                <dd>National Internet Registry</dd>
+
+                <dt>RIR:</dt>
+                <dd>Regional Internet Registry</dd>
+
                 <dt>NLRI:</dt>
                 <dd>Network Layer Reachability Information</dd>
 
@@ -107,59 +122,146 @@
                 <dt>uRPF:</dt>
                 <dd>Unicast Reverse Path Forwarding</dd>
             </dl>
+        </section>
+        <section  anchor="sec-terms">
+            <name>Used Terminology by Topic</name>
             <t>
-                In addition to the list above, the following terms are used with a specific meaning.
+                This section describes terms used in the context of global routing operations, grouped by topic.
+                Terms may have a different meaning depending on the context in which they are used.
+                Hence, terms may appear in multiple subsections with different descriptions..
             </t>
-            <dl newline="true" spacing="normal">
-                <dt>BGP Speaker:</dt>
-                <dd>A device exchanging routes with other BGP speakers using the BGP protocol</dd>
+            <section  anchor="sec-terms-general">
+                <name>General Terms</name>
+                <t>
+                    This section describes general terms used in the context of global routing operations, regardless of context.
+                </t>
+                <dl newline="true" spacing="normal">
+                    <dt>Operator:</dt>
+                    <dd>Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.</dd>
 
-                <dt>BGP Neighbor:</dt>
-                <dd>Also just 'Neighbor'. Two BGP speakers that communicate using the BGP protocols are neighbors.</dd>
+                    <dt>Router:</dt>
+                    <dd>In this document, router always refers to a BGP speaker.</dd>
 
-                <dt>Cone:</dt>
-                <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
+                    <dt>Global Routing Table:</dt>
+                    <dd>The set of all routes for an address family that have been announced to external BGP Neighbors.</dd>
 
-                <dt>Downstream:</dt>
-                <dd>In a direct relationship between two ASes the one receiving upstream from the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
+                    <dt>Route Selection:</dt>
+                    <dd>The process when a BGP speaker applies the locally configured policy to select the best route from multiple available options according to that policy.</dd>
 
-                <dt>Exporting a Prefix:</dt>
-                <dd>Advertising a prefix to a neighbor.</dd>
+                    <dt>Network Layer Reachability Information:</dt>
+                    <dd>General description for network reachability information. In the context of BGP, this usually refers to the complete set of information (prefix, next-hop, attributes, etc.) contained in a BGP update message.</dd>
 
-                <dt>Full Table:</dt>
-                <dd>A routing table containing a route to all prefixes in the GRT but not the default route.</dd>
+                    <dt>Default Free Zone:</dt>
+                    <dd>Part of the Internet where routers do not cary default routes.</dd>
 
-                <dt>Importing a Prefix:</dt>
-                <dd>Accepting a prefix advertised by a neighbor and considering it for route selection and import into the local AS' routing table.</dd>
+                </dl>
+            </section>
+            <section  anchor="sec-terms-relationships">
+                <name>Neighbor Relation Terms</name>
+                <t>
+                    This section lists terms used to describe relationships between different ASes.
+                </t>
+                <dl newline="true" spacing="normal">
+                    <dt>Cone:</dt>
+                    <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
 
-                <dt>Network edge:</dt>
-                <dd>Last routers under the control of an operator.</dd>
+                    <dt>Downstream:</dt>
+                    <dd>In a direct relationship between two ASes the one receiving upstream from the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
 
-                <dt>Mutual Transit:</dt>
-                <dd>When two directly connected ASes both advertise a BGP fulltable to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
+                    <dt>Mutual Transit:</dt>
+                    <dd>When two directly connected ASes both advertise a BGP fulltable to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
 
-                <dt>Upstream:</dt>
-                <dd>In a direct relationship between two ASes the one providing upstream to the other. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
+                    <dt>Upstream:</dt>
+                    <dd>In a direct relationship between two ASes the one providing upstream to the other. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
 
-                <dt>Operator:</dt>
-                <dd>Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.</dd>
+                    <dt>Peer:</dt>
+                    <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
 
-                <dt>Originating a Prefix:</dt>
-                <dd>Advertising a prefix with an empty AS-Path.</dd>
+                    <dt>Providing Transit:</dt>
+                    <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
 
-                <dt>Peer:</dt>
-                <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
+                    <dt>Providing Upstream:</dt>
+                    <dd>See: Providing Transit</dd>
 
-                <dt>Providing Transit:</dt>
-                <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
+                    <dt>Depeering:</dt>
+                    <dd>Removing sessions with a neighboring AS.</dd>
 
-                <dt>Providing Upstream:</dt>
-                <dd>See: Providing Transit</dd>
+                    <dt>Neighbor:</dt>
+                    <dd>An AS to which an established BGP session exists.</dd>
 
-                <dt>Router:</dt>
-                <dd>In this document, router always refers to a BGP speaker.</dd>
+                </dl>
+            </section>
+            <section  anchor="sec-terms-routing">
+                <name>Routing Terms</name>
+                <t>
+                    This section describes terms specific to technical aspects of routing.
+                </t>
+                <dl newline="true" spacing="normal">
+                    <dt>BGP Speaker:</dt>
+                    <dd>A device exchanging routes with other BGP speakers using the BGP protocol</dd>
 
-            </dl>
+                    <dt>Full Table:</dt>
+                    <dd>A routing table containing a route to all prefixes in the GRT but not the default route.</dd>
+
+                    <dt>Exporting a Prefix:</dt>
+                    <dd>Advertising a prefix to a neighbor.</dd>
+
+                    <dt>Importing a Prefix:</dt>
+                    <dd>Accepting a prefix advertised by a neighbor and considering it for route selection and import into the local AS' routing table.</dd>
+
+                    <dt>Network edge:</dt>
+                    <dd>Last routers under the control of an operator.</dd>
+
+                    <dt>Originating a Prefix:</dt>
+                    <dd>Anouncing a prefix with an empty AS-Path.</dd>
+
+                    <dt>Propagating a Prefix:</dt>
+                    <dd>Announcing a prefix with an non-empty AS-Path including other ASes than the announcing AS.</dd>
+
+                    <dt>BGP Neighbor:</dt>
+                    <dd>Also just 'Neighbor'. Two BGP speakers that exchange NLRI using the BGP protocol are neighbors.</dd>
+
+                    <dt>Peer:</dt>
+                    <dd>A BGP neighbor, if not used to describe a relationship.</dd>
+
+                    <dt>Prepending:</dt>
+                    <dd>Inserting an ASes into the AS_PATH multiple times to influence route selection.</dd>
+
+                    <dt>Traffic Engineering:</dt>
+                    <dd>Making changes to properties of imported and exported NLRI to influence route selection, and thereby the flow of traffic.</dd>
+
+                    <dt>Converging:</dt>
+                    <dd>Used to describe the process of a BGP speaker evaluating all routes and finding the preferred route for each visible prefix.
+                        Reconverging is often also used to describe an ongoing selection process reevaluating all routes sent by neighbors, e.g., after a loss of connectivity to one or multiple neighbors.</dd>
+
+                </dl>
+            </section>
+            <section  anchor="sec-terms-security">
+                <name>Security Terms</name>
+                <t>
+                    This section describes terms used in the context of routing security.
+                </t>
+                <dl newline="true" spacing="normal">
+                    <dt>Route Flapping:</dt>
+                    <dd>A route that is constantly announced and widthdrawn or otherwise sees constant change.</dd>
+
+                    <dt>BGP Hijack / Route Hijack:</dt>
+                    <dd>When an AS announces a route it is not authorized to announce with the intent of intercepting traffic towards the authorized origin.</dd>
+
+                    <dt>Route Leak:</dt>
+                    <dd>When an AS announces a route it is not authorized to announce without malicious intent.</dd>
+
+                    <dt>Update Storm:</dt>
+                    <dd>A continuous high volume stream of BGP Updates send to one or multiple neighbors.</dd>
+
+                    <dt>Cascading Update Storm:</dt>
+                    <dd>When an update storm traverses beyond directly connected neighbors.</dd>
+
+                    <dt>Blackholing:</dt>
+                    <dd>Announcing prefixes grouped by a specific community to inform all neighbors observing the announcement that traffic to the destination should be dropped.</dd>
+
+                </dl>
+            </section>
         </section>
 
         <section  anchor="sec-iana-considerations">
