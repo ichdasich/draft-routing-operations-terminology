@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-01T00:27:40.397916+00:00",
+  "timestamp": "2024-10-03T00:24:22.179267+00:00",
   "repo": "ichdasich/draft-routing-operations-terminology",
   "labels": [
     {
@@ -49,6 +49,23 @@
       "color": "ffffff"
     }
   ],
-  "issues": [],
+  "issues": [
+    {
+      "number": 1,
+      "id": "I_kwDOLtSbos6Yq1_t",
+      "title": "Add terms from WT glossary",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/1",
+      "state": "OPEN",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "WT suggested to use terms from his glossary here:\r\n\r\nhttps://github.com/wtremmel/BGP-for-networks-who-peer/releases/download/v2024-06-20-001/BGP_for_networks_who_peer.pdf",
+      "createdAt": "2024-10-02T11:45:04Z",
+      "updatedAt": "2024-10-02T11:45:04Z",
+      "closedAt": null,
+      "comments": []
+    }
+  ],
   "pulls": []
 }
