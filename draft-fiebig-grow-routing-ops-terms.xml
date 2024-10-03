@@ -80,6 +80,9 @@
                 <dt>ASN:</dt>
                 <dd>Autonomous System Number</dd>
 
+                <dt>CE:</dt>
+                <dd>Customer Edge Router</dd>
+
                 <dt>DFZ:</dt>
                 <dd>Default Free Zone</dd>
 
@@ -101,11 +104,20 @@
                 <dt>OTC:</dt>
                 <dd>Only To Customer BGP Attribute</dd>
 
+                <dt>P:</dt>
+                <dd>Provider Router</dd>
+
+                <dt>PE:</dt>
+                <dd>Provider Edge Router</dd>
+
                 <dt>PMTUD:</dt>
                 <dd>Path MTU Discovery</dd>
 
                 <dt>uRPF:</dt>
                 <dd>Unicast Reverse Path Forwarding</dd>
+
+                <dt>VRF:</dt>
+                <dd>Virtual Routing and Forwarding</dd>
             </dl>
             <t>
                 In addition to the list above, the following terms are used with a specific meaning.
@@ -116,6 +128,9 @@
 
                 <dt>BGP Neighbor:</dt>
                 <dd>Also just 'Neighbor'. Two BGP speakers that communicate using the BGP protocols are neighbors.</dd>
+
+                <dt>Customer Edge (CE) Router:</dt>
+                <dd>Router at the customer's premises, may be connected to PE routers.</dt>
 
                 <dt>Cone:</dt>
                 <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
@@ -133,7 +148,7 @@
                 <dd>Accepting a prefix advertised by a neighbor and considering it for route selection and import into the local AS' routing table.</dd>
 
                 <dt>Network edge:</dt>
-                <dd>Last routers under the control of an operator.</dd>
+                <dd>Last routers under the control of an operator connected to routers of other networks.</dd>
 
                 <dt>Mutual Transit:</dt>
                 <dd>When two directly connected ASes both advertise a BGP fulltable to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
@@ -145,10 +160,16 @@
                 <dd>Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.</dd>
 
                 <dt>Originating a Prefix:</dt>
-                <dd>Advertising a prefix with an empty AS-Path.</dd>
+                <dd>Advertising a prefix with only the local AS in it's AS-Path, or an empty AS-Path.</dd>
 
                 <dt>Peer:</dt>
                 <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
+
+                <dt>Provider (P) Router:</dt>
+                <dd>A router with the core of a provider's network, usually implying the use of MPLS within the provider's network. Connected to other P and PE routers.</dt>
+
+                <dt>Provider Edge (PE) Router:</dt>
+                <dd>Like Network Edge, usually implying the use of MPLS within the provider's network. Connected to other PE, P, and CE routers.</dt>
 
                 <dt>Providing Transit:</dt>
                 <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
@@ -158,7 +179,6 @@
 
                 <dt>Router:</dt>
                 <dd>In this document, router always refers to a BGP speaker.</dd>
-
             </dl>
         </section>
 
