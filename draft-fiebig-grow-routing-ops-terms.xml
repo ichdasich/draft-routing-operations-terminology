@@ -133,6 +133,15 @@
 
                 <dt>VRF:</dt>
                 <dd>Virtual Routing and Forwarding</dd>
+
+                <dt>RPKI:</dt>
+                <dd>Resource Public Key Infrastructure</dd>
+
+                <dt>ROA:</dt>
+                <dd>Route Origin Authorization</dd>
+
+                <dt>ROV:</dt>
+                <dd>Route Origin Validation</dd>
             </dl>
         </section>
         <section  anchor="sec-terms">
