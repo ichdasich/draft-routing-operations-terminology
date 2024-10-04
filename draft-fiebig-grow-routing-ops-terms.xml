@@ -80,7 +80,7 @@
         <section  anchor="sec-acronyms">
             <name>Acronyms</name>
             <t>
-                The following acronymes are commonly used in the context of global routing operations:
+                The following acronyms are commonly used in the context of global routing operations:
             </t>
             <dl newline="true" spacing="normal">
                 <dt>ACL:</dt>
@@ -170,7 +170,7 @@
                     <dd>General description for network reachability information. In the context of BGP, this usually refers to the complete set of information (prefix, next-hop, attributes, etc.) contained in a BGP update message.</dd>
 
                     <dt>Default Free Zone:</dt>
-                    <dd>Part of the Internet where routers do not cary default routes.</dd>
+                    <dd>Part of the Internet where routers do not carry default routes.</dd>
 
                 </dl>
             </section>
@@ -248,7 +248,7 @@
                     <dd>Last routers under the control of an operator.</dd>
 
                     <dt>Originating a Prefix:</dt>
-                    <dd>Anouncing a prefix with an empty AS-Path.</dd>
+                    <dd>Announcing a prefix with an empty AS-Path.</dd>
 
                     <dt>Propagating a Prefix:</dt>
                     <dd>Announcing a prefix with an non-empty AS-Path including other ASes than the announcing AS.</dd>
