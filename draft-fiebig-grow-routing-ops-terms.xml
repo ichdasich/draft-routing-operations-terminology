@@ -157,6 +157,63 @@
                     This section describes general terms used in the context of global routing operations, regardless of context.
                 </t>
                 <dl newline="true" spacing="normal">
+                    <dt>Autonomous System:</dt>
+                    <dd>A connected group of one or more IP prefixes run by one or more network operators which has a SINGLE and CLEARLY DEFINED routing policy.</dd>
+
+                    <dt>Autonomous System Number:</dt>
+                    <dd>A 32-bit number uniquely identifying an Autonomous System.</dd>
+
+                    <dt>AS Confederation Identifier:</dt>
+                    <dd>{is according to <xref target="RFC5065" format="default"/> an externally visible autonomous system number that identifies a BGP confederation as a whole.</dd>
+
+                    <dt>Bidirectional Forwarding Detection:</dt>
+                    <dd>BFD is a protocol to check if a configured neighbor is alive. For this packets are sent quite rapidly between two systems (rapidly means in the 100ms time range), if no packets are received from the neighbor for a given time, the neighbor is considered to be no longer reachable which is then signaled to other protocols like BGP. BFD is defined in <xref target="RFC5880" format="default"/>, its application on IPv4 and IPv6 is defined in <xref target="RFC5881" format="default"/>. <xref target="RFC5882" format="default"/> is about the general application of BFD and <xref target="RFC5883" format="default"/> describes BFD on multihop paths.}</dd>
+
+                    <dt>BGP Path Attribute:</dt>
+                    <dd>BGP update messages for prefixes contain not only the AS-Path but also other attributes. BGP Path Attributes fall into four different categories: well-known mandatory, well-known discretionary, optional transitive, optional non-transitive.</dd>
+
+                    <dt>Well-known mandatory BGP Path Attribute:</dt>
+                    <dd>A BGP Path Attribute that needs to be understood by all BGP implementations and must be included in all NLRI.</dd>
+
+                    <dt>Well-known discretionary BGP Path Attribute:</dt>
+                    <dd>A BGP Path Attribute that needs to be understood by all BGP implementations but is not required to be included in NLRI.</dd>
+
+                    <dt>Optional transitive BGP Path Attribute:</dt>
+                    <dd>Optional transitive BGP Path Attributes  are not required to be present in NLRI, do not have to be understood by all implementations, but should remain in BGP messages and should forwarded to other BGP speakers, even if their semantics are not understood by an implementation.</dd>
+
+                    <dt>Optional non-transitive BGP Path Attribute:</dt>
+                    <dd>Optional non-transitive BGP Path Attributes are similar to Optional transitive BGP Path Attributes, but must not be included in NLRI send to external BGP speakers.</dd>
+
+                    <dt>Enhanced Interior Gateway Routing Protocol:</dt>
+                    <dd>EIGRP is a IGP defined by Cisco in the 1980s to distribute routing information within a network. It was later openly specified in <xref target="RFC7868" format="default"/>.</dd>
+
+                    <dt>Exterior Gateway Protocol:</dt>
+                    <dd>EGP was a predecessor to BGP. First defined 1982 in <xref target="RFC827" format="default"/> it became obsolete once BGP was widely used (around 1994). Additionally, as a general term, it is used for protocols used to exchange routing information between ASes. In that meaning, BGP is currently the only EGP.</dd>
+
+                    <dt>Interior Gateway Protocol:</dt>
+                    <dd>An IGP is a protocol running inside an Autonomous System to distribute the IP addresses of router interfaces.</dd>
+
+                    <dt>IS-IS:</dt>
+                    <dd>The Intermediate System to Intermediate System protocol is an IGP running directly on top of layer 2. It is used to distribute interface addresses within a network</dd>
+
+                    <dt>Local Internet Registry:</dt>
+                    <dd>An LIR is an organzation/company which receives IP address resources or Autonomous System Numbers as an allocation from a Regional Internet Registry and assigns these resources to end users.</dd>
+
+                    <dt>Open Shortest Path First:</dt>
+                    <dd>OSPF is a link state routing protocol. It is used as an IGP.</dd>
+
+                    <dt>Regional Internet Registry:</dt>
+                    <dd>An RIR is an entity responsible for allocating IP addresses and AS numbers to NIRs and LIRs. At the moment, currently, the five RIRs are Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC, each being responsible for a different region.</dd>
+
+                    <dt>Routing Information Protocol:</dt>
+                    <dd>RIP is an old and by now obsolete protocol which was used to distribute routing information. RIP is no longer in use</dd>
+
+                    <dt>RIPE:</dt>
+                    <dd>Is shorthand for Réseaux IP Européens, which is the community of network operators in the European, Russian, and Middle Eastern region. See also RIPE NCC.</dd>
+
+                    <dt>RIPE NCC:</dt>
+                    <dd>The RIPE NCC, sometimes also just called the NCC, is the RIR for the European, Russian, and Middle Eastern region.</dd>
+
                     <dt>Operator:</dt>
                     <dd>Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.</dd>
 
@@ -181,6 +238,18 @@
                     <dt>Default Free Zone:</dt>
                     <dd>Part of the Internet where routers do not carry default routes.</dd>
 
+                    <dt>Round Trip Time:</dt>
+                    <dd>The Round Tripe TIme between two hosts is the time measured in seconds or milliseconds it takes from sending out a packet until receiving a reply.</dd>
+
+                    <dt>TCP:</dt>
+                    <dd>The Transmission Control Protocol is part of the TCP/IP protocol stack. It is a connection oriented protocol taking care that everything which is sent is also received.</dd>
+
+                    <dt>MD5:</dt>
+                    <dd>MD5 is a by now obsolete hashing algorithm, used to generate a checksum on given data. However, it is still regularly used to secure BGP sessions, even though it should be replaced by now.</dd>
+
+                    <dt>Time To Live:</dt>
+                    <dd>The TTL is a counter in the IP header which is decreased every time a packet is forwarded by a router. If this counter hits zero, the packet is discarded and an ICMP Time Exceeded message is sent back to the originator of the packet.</dd>
+
                 </dl>
             </section>
             <section  anchor="sec-terms-relationships">
@@ -189,6 +258,12 @@
                     This section lists terms used to describe relationships between different ASes.
                 </t>
                 <dl newline="true" spacing="normal">
+                    <dt>AS Confederation:</dt>
+                    <dd>According to <xref target="RFC5065" format="default"/> a collection of autonomous systems represented and advertised as a single AS number to BGP speakers that are not members of the local BGP confederation.</dd>
+
+                    <dt>ICMP:</dt>
+                    <dd>Internet Control Message Protocol - this protocol is used to signal errors when forwarding packets.</dd>
+
                     <dt>Cone:</dt>
                     <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
 
@@ -230,9 +305,6 @@
 
                     <dt>Neighbor:</dt>
                     <dd>An AS to which an established BGP session exists.</dd>
-
-                    <dt>Router:</dt>
-                    <dd>In this document, router always refers to a BGP speaker.</dd>
                 </dl>
             </section>
             <section  anchor="sec-terms-routing">
@@ -278,6 +350,26 @@
                     <dd>Used to describe the process of a BGP speaker evaluating all routes and finding the preferred route for each visible prefix.
                         Reconverging is often also used to describe an ongoing selection process reevaluating all routes sent by neighbors, e.g., after a loss of connectivity to one or multiple neighbors.</dd>
 
+                    <dt>Route Reflector:</dt>
+                    <dd>A Route Reflector is an iBGP speaker which sends all prefixes it receives out to its Route Reflector Clients. It is a central component for network designs that do not use a full mesh for iBGP speakers.</dd>
+
+                    <dt>Route Reflector Client:</dt>
+                    <dd>A Route Reflector CLient an iBGP speaking node with usually only one iBGP connection to a Route Reflector.</dd>
+
+                    <dt>Default Route:</dt>
+                    <dd>The default route is a route which covers every destination for which there is no specific route in the routing table. The destination of the default-route is often called the default destination or the gateway of last resort.</dd>
+
+                    <dt>Blackholing:</dt>
+                    <dd>As a general term, blackholing refers to packets silently being dropped, i.e., without the sender being notified via an ICMP or ICMP6 message. For the additional meaning in the context of network security, please see below.</dd>
+
+                    <dt>Multi Exit Discriminator:</dt>
+                    <dd>MED is a metric in BGP which is used to signal neighbor to which an AS has multiple links via which path inbound traffic for a prefix is preferred.</dd>
+
+                    <dt>Local Preference:</dt>
+                    <dd>The local preference is the first evaluated BGP Attribute in best path selection selection process when comparing multiple NLRI for the same prefix. It is an integer value, and NLRI with a higher local preference will be preferred. It is redistributed via iBGP inside an Autonomous System}</dd>
+
+                    <dt>Router:</dt>
+                    <dd>Generally a term for a system forwarding network traffic on Layer 3. In the context of BGP, this usually refers to a BGP speaker.</dd>
                 </dl>
             </section>
             <section  anchor="sec-terms-security">
@@ -303,6 +395,21 @@
 
                     <dt>Blackholing:</dt>
                     <dd>Announcing prefixes grouped by a specific community to inform all neighbors observing the announcement that traffic to the destination should be dropped.</dd>
+
+                    <dt>ROA:</dt>
+                    <dd>Route Origin Authorization - a cryptographically signed record in the RPKI which defines how a prefix can be announced, it defines the originating Autonomous System and the maximum prefix length.</dd>
+
+                    <dt>RPKI:</dt>
+                    <dd>Resource Public Key Infrastructure is a framework of certificates and ROA which enables resource holders to cryptographically prove that a resource is theirs and to define how it can be announced via BGP.</dd>
+
+                    <dt>RPKI validator:</dt>
+                    <dd>An RPKI validator is a piece of software that fetches RPKI certificates and ROAs from from RPKI publication points, checks the signatures of the certificates and ROAs.</dd>
+
+                    <dt>RTR Protocol</dt>
+                    <dd>The RPKI to Router Protocol is used to communicate a validator's view on the RPKI to routers, providing and maintaining a list of certified prefixes and their allowed originating AS numbers. RTR may be an independent daemon, or can also be integrated in an RPKI validator.</dd>
+
+                    <dt>DDOS:</dt>
+                    <dd>A distributed denial of service (DDOS) attack is an attack against a system via the Internet. The attacker uses multiple (sometimes millions of) network sources to send more traffic towards the attacked system than it can handle. Collateral damage is quite often the network infrastructure to which the attacked system is connected to.</dd>
 
                 </dl>
             </section>
@@ -333,7 +440,14 @@
             </references>
             <references>
                 <name>Informative References</name>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.827.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5065.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5880.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5881.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5882.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.5883.xml"/>
                 <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7454.xml"/>
+                <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.7868.xml"/>
                 <xi:include href="https://www.rfc-editor.org/refs/bibxml/reference.RFC.9234.xml"/>
                 <reference anchor="I-D.ietf-sidrops-aspa-verification" target="https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-aspa-verification-17">
                     <front>
