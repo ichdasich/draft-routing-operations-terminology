@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-03T00:24:22.179267+00:00",
+  "timestamp": "2024-10-06T00:27:04.162498+00:00",
   "repo": "ichdasich/draft-routing-operations-terminology",
   "labels": [
     {
@@ -55,17 +55,102 @@
       "id": "I_kwDOLtSbos6Yq1_t",
       "title": "Add terms from WT glossary",
       "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/1",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ichdasich",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "WT suggested to use terms from his glossary here:\r\n\r\nhttps://github.com/wtremmel/BGP-for-networks-who-peer/releases/download/v2024-06-20-001/BGP_for_networks_who_peer.pdf",
       "createdAt": "2024-10-02T11:45:04Z",
-      "updatedAt": "2024-10-02T11:45:04Z",
+      "updatedAt": "2024-10-04T07:50:53Z",
+      "closedAt": "2024-10-04T07:50:53Z",
+      "comments": [
+        {
+          "author": "ichdasich",
+          "authorAssociation": "OWNER",
+          "body": "fixed by e607780881138ff13abc44f0fcbd778e6f4bf252",
+          "createdAt": "2024-10-04T07:50:53Z",
+          "updatedAt": "2024-10-04T07:50:53Z"
+        }
+      ]
+    },
+    {
+      "number": 2,
+      "id": "I_kwDOLtSbos6YyJku",
+      "title": "Discuss the difference between originate/advertise/announce",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/2",
+      "state": "OPEN",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedback from nanog: 1. I wonder if it worth to mention the difference between advertise and\r\nannounce (which at the end are synonyms, right?)",
+      "createdAt": "2024-10-03T07:03:34Z",
+      "updatedAt": "2024-10-03T07:03:35Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 3,
+      "id": "I_kwDOLtSbos6Y0BXC",
+      "title": "Refine upstream/downstream descriptions",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/3",
+      "state": "OPEN",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Feedback from nanog: Reading through that, there are some definitions I think could be done better.\r\n\r\nIn section 4.2 you have:\r\n Downstream:\r\n   In a direct relationship between two ASes the one receiving upstream from the other. (See: [RFC9234], also known as the customer in a customer-provider relationship.)\r\n Upstream:\r\n   In a direct relationship between two ASes the one providing upstream to the other. (See: [RFC9234], also known as the provider in a customer-provider relationship.)\r\n Providing Transit:\r\n   Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.\r\n Providing Upstream:\r\n   See: Providing Transit\r\n\r\nEspecially with the definition for \"Upstream\", it took me reading the whole of the section to understand that you don't actually have a circular definition there. If you change the definitions in the \"Downstream\" and \"Upstream\" sections to refer to providing or receiving \"transit\" instead of \"upstream\" I feel that it would read more clearly as well as pointing to a term has its own definition without pointing to another term.\r\n",
+      "createdAt": "2024-10-03T11:11:56Z",
+      "updatedAt": "2024-10-03T11:11:56Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 5,
+      "id": "I_kwDOLtSbos6Y643g",
+      "title": "Add MPLS, L2VPN, L3VPN, BGP Free Core",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/5",
+      "state": "OPEN",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-04T06:38:11Z",
+      "updatedAt": "2024-10-04T06:38:11Z",
       "closedAt": null,
       "comments": []
     }
   ],
-  "pulls": []
+  "pulls": [
+    {
+      "number": 4,
+      "id": "PR_kwDOLtSbos59jSZB",
+      "title": "Add CE, PE, P, VRF + explanations",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/pull/4",
+      "state": "MERGED",
+      "author": "BarbarossaTM",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-03T21:00:32Z",
+      "updatedAt": "2024-10-04T06:37:47Z",
+      "baseRepository": "ichdasich/draft-routing-operations-terminology",
+      "baseRefName": "main",
+      "baseRefOid": "99d363fd6a1206904cd95c99c893abdee17cc1d9",
+      "headRepository": "BarbarossaTM/draft-routing-operations-terminology",
+      "headRefName": "add-ce-pe-p-vrf",
+      "headRefOid": "ca801e45545ddb4b48db75395d7cc9936aa3de00",
+      "closedAt": "2024-10-04T06:37:47Z",
+      "mergedAt": "2024-10-04T06:37:47Z",
+      "mergedBy": "ichdasich",
+      "mergeCommit": {
+        "oid": "399a962d1f7936b7bd914713d1bb2eb6af799aa4"
+      },
+      "comments": [],
+      "reviews": []
+    }
+  ]
 }
