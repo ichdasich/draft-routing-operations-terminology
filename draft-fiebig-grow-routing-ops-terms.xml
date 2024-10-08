@@ -284,14 +284,14 @@
                     <dt>Network edge:</dt>
                     <dd>Last routers under the control of an operator connected to routers of other networks.</dd>
 
-                    <dt>Downstream:</dt>
-                    <dd>In a direct relationship between two ASes the one receiving upstream from the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
-
                     <dt>Mutual Transit:</dt>
                     <dd>When two directly connected ASes both advertise a BGP fulltable to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
 
-                    <dt>Upstream:</dt>
-                    <dd>In a direct relationship between two ASes the one providing upstream to the other. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
+                    <dt>Upstream Provider / Transit Provider:</dt>
+                    <dd>In a direct relationship between two ASes the one announcing either the full BGP routing table to the other or allowing the otherto point a default route to itself. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
+                    
+                    <dt>Downstream Customer:</dt>
+                    <dd>In a direct relationship between two ASes the one receiving a full BGP from the other or pointing a default route to the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
 
                     <dt>Peer:</dt>
                     <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
