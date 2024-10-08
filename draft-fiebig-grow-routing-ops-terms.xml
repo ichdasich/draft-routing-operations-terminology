@@ -24,6 +24,20 @@
                 <email>tfiebig@mpi-inf.mpg.de</email>
             </address>
         </author>
+        <author fullname="Wolfgang Tremmel" initials="W." surname="Tremmel">
+            <organization abbrev="DE-CIX">DE-CIX Management GmbH</organization>
+            <address>
+                <postal>
+                    <street>Lindleystr. 12</street>
+                    <city>Frankfurt</city>
+                    <code>60314</code>
+                    <country>Germany</country>
+                </postal>
+                <phone>+49 69 1730 902 0</phone>
+                <email>wolfgang.tremmel@de-cix.net</email>
+            </address>
+        </author>
+
         <area>ops</area>
         <workgroup>Global Routing Operations</workgroup>
 
