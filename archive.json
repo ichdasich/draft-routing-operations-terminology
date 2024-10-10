@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-08T00:24:16.885004+00:00",
+  "timestamp": "2024-10-10T00:24:26.780838+00:00",
   "repo": "ichdasich/draft-routing-operations-terminology",
   "labels": [
     {
@@ -86,25 +86,55 @@
       "labels": [],
       "body": "Feedback from nanog: 1. I wonder if it worth to mention the difference between advertise and\r\nannounce (which at the end are synonyms, right?)",
       "createdAt": "2024-10-03T07:03:34Z",
-      "updatedAt": "2024-10-03T07:03:35Z",
+      "updatedAt": "2024-10-09T12:00:22Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "wtremmel",
+          "authorAssociation": "COLLABORATOR",
+          "body": "see branch \"originate\" - removed one duplicate definition and enhanced \"originating a prefix\" a bit",
+          "createdAt": "2024-10-09T12:00:21Z",
+          "updatedAt": "2024-10-09T12:00:21Z"
+        }
+      ]
     },
     {
       "number": 3,
       "id": "I_kwDOLtSbos6Y0BXC",
       "title": "Refine upstream/downstream descriptions",
       "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/3",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ichdasich",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Feedback from nanog: Reading through that, there are some definitions I think could be done better.\r\n\r\nIn section 4.2 you have:\r\n Downstream:\r\n   In a direct relationship between two ASes the one receiving upstream from the other. (See: [RFC9234], also known as the customer in a customer-provider relationship.)\r\n Upstream:\r\n   In a direct relationship between two ASes the one providing upstream to the other. (See: [RFC9234], also known as the provider in a customer-provider relationship.)\r\n Providing Transit:\r\n   Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.\r\n Providing Upstream:\r\n   See: Providing Transit\r\n\r\nEspecially with the definition for \"Upstream\", it took me reading the whole of the section to understand that you don't actually have a circular definition there. If you change the definitions in the \"Downstream\" and \"Upstream\" sections to refer to providing or receiving \"transit\" instead of \"upstream\" I feel that it would read more clearly as well as pointing to a term has its own definition without pointing to another term.\r\n",
       "createdAt": "2024-10-03T11:11:56Z",
-      "updatedAt": "2024-10-03T11:11:56Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2024-10-09T10:50:20Z",
+      "closedAt": "2024-10-09T10:50:20Z",
+      "comments": [
+        {
+          "author": "wtremmel",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Suggestion: \r\n- change the term to \"Upstream Provider\" / \"Transit Provider\" (synonym)\r\n-  Put the definition into Upstream Provider\r\n- define Downstream Customer only as \"a provider getting Internet connectivity from a Transit Provider\" (needs to be phrased more carefully)",
+          "createdAt": "2024-10-08T10:45:00Z",
+          "updatedAt": "2024-10-08T10:45:00Z"
+        },
+        {
+          "author": "wtremmel",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Possible definition, btw - I like yours as well....\r\n\r\n### Upstream Provider / Transit Provider\r\nAn Internet Service Provider either announcing the full BGP routing table to its customers (also called \"Downstream Customers\") _or_ allowing these customers to point a default route towards it. \r\n\r\n### Downstream Customer\r\nAn Internet Service Provider either receiving a full BGP table from an Upstream Provider _or_ pointing a default route to this Upstream Provider.",
+          "createdAt": "2024-10-08T10:49:03Z",
+          "updatedAt": "2024-10-08T10:49:03Z"
+        },
+        {
+          "author": "wtremmel",
+          "authorAssociation": "COLLABORATOR",
+          "body": "See branch updownstream for a suggestion ",
+          "createdAt": "2024-10-08T11:26:16Z",
+          "updatedAt": "2024-10-08T11:26:16Z"
+        }
+      ]
     },
     {
       "number": 5,
@@ -148,6 +178,62 @@
       "mergedBy": "ichdasich",
       "mergeCommit": {
         "oid": "399a962d1f7936b7bd914713d1bb2eb6af799aa4"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 6,
+      "id": "PR_kwDOLtSbos597lHl",
+      "title": "added me as author",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/pull/6",
+      "state": "MERGED",
+      "author": "wtremmel",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-10-08T10:38:02Z",
+      "updatedAt": "2024-10-08T11:18:25Z",
+      "baseRepository": "ichdasich/draft-routing-operations-terminology",
+      "baseRefName": "main",
+      "baseRefOid": "e607780881138ff13abc44f0fcbd778e6f4bf252",
+      "headRepository": "ichdasich/draft-routing-operations-terminology",
+      "headRefName": "wt-author",
+      "headRefOid": "3e7e4583b238e88374d9df50f486b64050736205",
+      "closedAt": "2024-10-08T10:38:31Z",
+      "mergedAt": "2024-10-08T10:38:31Z",
+      "mergedBy": "wtremmel",
+      "mergeCommit": {
+        "oid": "242d8edf281a203ca5574ccdee1e9f195a45d035"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 7,
+      "id": "PR_kwDOLtSbos599w2e",
+      "title": "change definition of upstream/downstream",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/pull/7",
+      "state": "MERGED",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "Merge suggestion by @wtremmel for refining up/downstream, closing #3 ",
+      "createdAt": "2024-10-08T15:06:22Z",
+      "updatedAt": "2024-10-08T15:06:56Z",
+      "baseRepository": "ichdasich/draft-routing-operations-terminology",
+      "baseRefName": "main",
+      "baseRefOid": "242d8edf281a203ca5574ccdee1e9f195a45d035",
+      "headRepository": "ichdasich/draft-routing-operations-terminology",
+      "headRefName": "updownstream",
+      "headRefOid": "8fe2f75e33181f76f986dc84afe1340914126fca",
+      "closedAt": "2024-10-08T15:06:51Z",
+      "mergedAt": "2024-10-08T15:06:51Z",
+      "mergedBy": "ichdasich",
+      "mergeCommit": {
+        "oid": "64ea9a4cc0175e3b8d5cf9063eb63b9461a052cf"
       },
       "comments": [],
       "reviews": []
