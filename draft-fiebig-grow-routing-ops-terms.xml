@@ -289,7 +289,7 @@
 
                     <dt>Upstream Provider / Transit Provider:</dt>
                     <dd>In a direct relationship between two ASes the one announcing either the full BGP routing table to the other or allowing the otherto point a default route to itself. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
-                    
+
                     <dt>Downstream Customer:</dt>
                     <dd>In a direct relationship between two ASes the one receiving a full BGP from the other or pointing a default route to the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
 
