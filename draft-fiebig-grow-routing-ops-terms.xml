@@ -296,9 +296,6 @@
                     <dt>Peer:</dt>
                     <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
 
-                    <dt>Originating a Prefix:</dt>
-                    <dd>Advertising a prefix with only the local AS in it's AS-Path, or an empty AS-Path.</dd>
-
                     <dt>Providing Transit:</dt>
                     <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
 
@@ -343,7 +340,7 @@
                     <dd>Last routers under the control of an operator.</dd>
 
                     <dt>Originating a Prefix:</dt>
-                    <dd>Announcing a prefix with an empty AS-Path.</dd>
+                    <dd>Inserting a prefix with an empty AS-Path into the BGP table of an operator. Once the prefix gets announced to neighboring ASes, the AS of the originating operator is added.</dd>
 
                     <dt>Propagating a Prefix:</dt>
                     <dd>Announcing a prefix with an non-empty AS-Path including other ASes than the announcing AS.</dd>
