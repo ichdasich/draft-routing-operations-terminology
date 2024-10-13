@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-10T00:24:26.780838+00:00",
+  "timestamp": "2024-10-13T00:26:55.354756+00:00",
   "repo": "ichdasich/draft-routing-operations-terminology",
   "labels": [
     {
@@ -79,15 +79,15 @@
       "id": "I_kwDOLtSbos6YyJku",
       "title": "Discuss the difference between originate/advertise/announce",
       "url": "https://github.com/ichdasich/draft-routing-operations-terminology/issues/2",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ichdasich",
       "authorAssociation": "OWNER",
       "assignees": [],
       "labels": [],
       "body": "Feedback from nanog: 1. I wonder if it worth to mention the difference between advertise and\r\nannounce (which at the end are synonyms, right?)",
       "createdAt": "2024-10-03T07:03:34Z",
-      "updatedAt": "2024-10-09T12:00:22Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-11T12:19:00Z",
+      "closedAt": "2024-10-11T12:19:00Z",
       "comments": [
         {
           "author": "wtremmel",
@@ -95,6 +95,13 @@
           "body": "see branch \"originate\" - removed one duplicate definition and enhanced \"originating a prefix\" a bit",
           "createdAt": "2024-10-09T12:00:21Z",
           "updatedAt": "2024-10-09T12:00:21Z"
+        },
+        {
+          "author": "ichdasich",
+          "authorAssociation": "OWNER",
+          "body": "Merged, thanks.",
+          "createdAt": "2024-10-11T12:19:00Z",
+          "updatedAt": "2024-10-11T12:19:00Z"
         }
       ]
     },
@@ -234,6 +241,34 @@
       "mergedBy": "ichdasich",
       "mergeCommit": {
         "oid": "64ea9a4cc0175e3b8d5cf9063eb63b9461a052cf"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 8,
+      "id": "PR_kwDOLtSbos5-Vk4W",
+      "title": "- removed duplicate entry for \"originating a prefix\"",
+      "url": "https://github.com/ichdasich/draft-routing-operations-terminology/pull/8",
+      "state": "MERGED",
+      "author": "ichdasich",
+      "authorAssociation": "OWNER",
+      "assignees": [],
+      "labels": [],
+      "body": "- enhanced the definition of originating a bit",
+      "createdAt": "2024-10-11T12:18:32Z",
+      "updatedAt": "2024-10-11T12:18:45Z",
+      "baseRepository": "ichdasich/draft-routing-operations-terminology",
+      "baseRefName": "main",
+      "baseRefOid": "64ea9a4cc0175e3b8d5cf9063eb63b9461a052cf",
+      "headRepository": "ichdasich/draft-routing-operations-terminology",
+      "headRefName": "originate",
+      "headRefOid": "6cbf2533f379f84255402f57b83d83cd170daf2e",
+      "closedAt": "2024-10-11T12:18:39Z",
+      "mergedAt": "2024-10-11T12:18:39Z",
+      "mergedBy": "ichdasich",
+      "mergeCommit": {
+        "oid": "68628af8b892cbb929c7356a92177176108e913d"
       },
       "comments": [],
       "reviews": []
