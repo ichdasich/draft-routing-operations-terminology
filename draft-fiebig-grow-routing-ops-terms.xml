@@ -481,9 +481,9 @@
                         <author initials="K." surname="Sriram" fullname="Kotikalapudi Sriram">
                             <organization>USA National Institute of Standards and Technology</organization>
                         </author>
-                        <date month="August" day="29" year="2023"/>
+                        <date month="March" day="23" year="2025"/>
                     </front>
-                    <seriesInfo name="Internet-Draft" value="draft-ietf-sidrops-aspa-verification-17"/>
+                    <seriesInfo name="Internet-Draft" value="draft-ietf-sidrops-aspa-verification-22"/>
                 </reference>
 
             </references>
