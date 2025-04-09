@@ -2,12 +2,12 @@
 
 # Currently Used Terminology in Global Routing Operations
 
-This is the working area for the individual Internet-Draft, "Currently Used Terminology in Global Routing Operations".
+This is the working area for the IETF [GROW Working Group](https://datatracker.ietf.org/group/grow/documents/) Internet-Draft, "Currently Used Terminology in Global Routing Operations".
 
-* [Editor's Copy](https://ichdasich.github.io/draft-routing-operations-terminology/#go.draft-fiebig-grow-routing-ops-terms.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-fiebig-grow-routing-ops-terms)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-fiebig-grow-routing-ops-terms)
-* [Compare Editor's Copy to Individual Draft](https://ichdasich.github.io/draft-routing-operations-terminology/#go.draft-fiebig-grow-routing-ops-terms.diff)
+* [Editor's Copy](https://ichdasich.github.io/draft-routing-operations-terminology/#go.draft-ietf-grow-routing-ops-terms.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-grow-routing-ops-terms)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-grow-routing-ops-terms)
+* [Compare Editor's Copy to Working Group Draft](https://ichdasich.github.io/draft-routing-operations-terminology/#go.draft-ietf-grow-routing-ops-terms.diff)
 
 
 ## Contributing
