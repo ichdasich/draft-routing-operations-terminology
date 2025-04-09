@@ -5,12 +5,12 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                   MPI-INF
 Intended status: Informational                                W. Tremmel
-Expires: 2 October 2025                                           DE-CIX
-                                                           31 March 2025
+Expires: 11 October 2025                                          DE-CIX
+                                                            9 April 2025
 
 
         Currently Used Terminology in Global Routing Operations
-               draft-fiebig-grow-routing-ops-terms-latest
+                draft-ietf-grow-routing-ops-terms-latest
 
 Abstract
 
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 2 October 2025.
+   This Internet-Draft will expire on 11 October 2025.
 
 Copyright Notice
 
@@ -279,12 +279,13 @@ Table of Contents
 
    RIPE:
       Is shorthand for Réseaux IP Européens, which is the community of
-      network operators in the European, Russian, and Middle Eastern
-      region.  See also RIPE NCC.
+      network operators in the RIPE NCC's service region.  See also RIPE
+      NCC.
 
    RIPE NCC:
       The RIPE NCC, sometimes also just called the NCC, is the RIR for
-      the European, Russian, and Middle Eastern region.
+      75 countries spanning Europe, parts of central Asia, and the
+      Middle East.
 
    Operator:
       Individual, group of people, or organizational unit responsible
@@ -666,6 +667,8 @@ Acknowledgements
    *  Berislav Todorovic
 
    *  Maximilian Wilhelm
+
+   *  Emile Aben
 
 Authors' Addresses
 
