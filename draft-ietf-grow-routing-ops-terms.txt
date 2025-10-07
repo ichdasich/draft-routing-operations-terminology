@@ -5,8 +5,8 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                   MPI-INF
 Intended status: Informational                                W. Tremmel
-Expires: 11 October 2025                                          DE-CIX
-                                                            9 April 2025
+Expires: 10 April 2026                                            DE-CIX
+                                                          7 October 2025
 
 
         Currently Used Terminology in Global Routing Operations
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 October 2025.
+   This Internet-Draft will expire on 10 April 2026.
 
 Copyright Notice
 
@@ -640,7 +640,7 @@ Table of Contents
               J., and K. Sriram, "BGP AS_PATH Verification Based on
               Autonomous System Provider Authorization (ASPA) Objects",
               Work in Progress, Internet-Draft, draft-ietf-sidrops-aspa-
-              verification-22, 23 March 2025,
+              verification-23, 23 September 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-sidrops-
               aspa-verification-17>.
 
