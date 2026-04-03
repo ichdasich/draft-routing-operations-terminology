@@ -3,10 +3,10 @@
 
 
 Global Routing Operations                                      T. Fiebig
-Internet-Draft                                                   MPI-INF
+Internet-Draft                                                       TUW
 Intended status: Informational                                W. Tremmel
-Expires: 10 April 2026                                            DE-CIX
-                                                          7 October 2025
+Expires: 5 October 2026                                           DE-CIX
+                                                            3 April 2026
 
 
         Currently Used Terminology in Global Routing Operations
@@ -40,11 +40,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 April 2026.
+   This Internet-Draft will expire on 5 October 2026.
 
 Copyright Notice
 
-   Copyright (c) 2025 IETF Trust and the persons identified as the
+   Copyright (c) 2026 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -673,12 +673,12 @@ Acknowledgements
 Authors' Addresses
 
    Tobias Fiebig
-   Max-Planck-Institut fuer Informatik
-   Campus E14
-   66123 Saarbruecken
-   Germany
-   Phone: +49 681 9325 3527
-   Email: tfiebig@mpi-inf.mpg.de
+   TU Wien
+   Treitlstr. 3
+   1040 Wien
+   Austria
+   Phone: +43 676 930 22 52
+   Email: tobias.fiebig@tuwien.ac.at
 
 
    Wolfgang Tremmel
