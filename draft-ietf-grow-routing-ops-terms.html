@@ -17,21 +17,22 @@
                 The document explicitly does not serve as an authoritative source of correct terminology, but instead strives to provide an overview of practice.
        
     " name="description">
-<meta content="xml2rfc 3.32.0" name="generator">
+<meta content="xml2rfc 3.34.0" name="generator">
 <meta content="draft-ietf-grow-routing-ops-terms-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.32.0
-    Python 3.12.12
-    ConfigArgParse 1.7
+  xml2rfc 3.34.0
+    Python 3.14.5
+    ConfigArgParse 1.7.5
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 6.0.2
-    platformdirs 4.9.4
+    lxml 6.1.1
+    natsort 8.4.0
+    platformdirs 4.10.1
     pycountry 24.6.1
     PyYAML 6.0.3
-    requests 2.32.5
-    wcwidth 0.6.0
+    requests 2.33.1
+    wcwidth 0.8.2
 -->
 <link href="draft-ietf-grow-routing-ops-terms.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -298,16 +299,19 @@ h1, h2, h3, h4, h5, h6 {
   font-size-adjust: 0.5;
   color: var(--title-color);
 }
-h1#title {
-  font-size: 32px;
-  line-height: 40px;
-  clear: both;
-}
-h1#title, h1#rfcnum {
-  margin: 1.5em 0 0.2em;
-}
-h1#rfcnum + h1#title {
-  margin: 0.2em 0;
+h1 {
+  &#title {
+    font-size: 32px;
+    line-height: 40px;
+    clear: both;
+    margin: 1.5em 0 0.2em;
+  }
+  &#rfcnum {
+    margin: 1.5em 0 0.2em;
+    & + h1#title {
+      margin: 0.2em 0;
+    }
+  }
 }
 
 h1, h2, h3 {
@@ -327,10 +331,10 @@ h4, h5, h6 {
 #abstract+p {
   font-size: 18px;
   line-height: 24px;
-}
-#abstract+p code, #abstract+p samp, #abstract+p tt {
-  font-size: 16px;
-  line-height: 0;
+  & code, & samp, & tt {
+    font-size: 16px;
+    line-height: 0;
+  }
 }
 
 p {
@@ -341,59 +345,59 @@ p {
 div {
   margin: 0;
 }
-.alignRight.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignRight.art-text pre {
-  padding: 0;
-  width: auto;
-}
 .alignRight {
   margin: 1em 0;
-}
-.alignRight > *:first-child {
-  border: none;
-  margin: 0;
-  float: right;
-  clear: both;
-}
-.alignRight > *:nth-child(2) {
-  clear: both;
-  display: block;
-  border: none;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    margin: 0;
+    float: right;
+    clear: both;
+  }
+  & > *:nth-child(2) {
+    clear: both;
+    display: block;
+    border: none;
+  }
 }
 svg {
   display: block;
-}
-/* font-family isn't space-separated, but =~ will have to do */
-svg[font-family~="monospace" i], svg [font-family~="monospace" i] {
-  font-family: var(--font-mono);
-}
-.alignCenter.art-text {
-  background-color: var(--highlight-color);
-  border: 1px solid var(--line-color);
-  border-radius: 3px;
-  padding: 0.5em 1em 0;
-  margin-bottom: 0.5em;
-}
-.alignCenter.art-text pre {
-  padding: 0;
-  width: auto;
+  /* font-family isn't space-separated, but =~ will have to do */
+  &[font-family~="monospace" i], & [font-family~="monospace" i] {
+    font-family: var(--font-mono);
+  }
 }
 .alignCenter {
   margin: 1em 0;
-}
-.alignCenter > *:first-child {
-  border: none;
-  /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
-     support flexbox yet.
-  */
-  display: table;
-  margin: 0 auto;
+  &.art-text {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--line-color);
+    border-radius: 3px;
+    padding: 0.5em 1em 0;
+    margin-bottom: 0.5em;
+    & pre {
+      padding: 0;
+      width: auto;
+    }
+  }
+  & > *:first-child {
+    border: none;
+    /* this isn't optimal, but it's an existence proof.  PrinceXML doesn't
+       support flexbox yet.
+    */
+    display: table;
+    margin: 0 auto;
+  }
 }
 
 /* lists */
@@ -431,26 +435,25 @@ dl {
     --indent: 5ch;
     & > dt {
       min-width: calc(var(--indent) - 2ch);
+      float: none;
     }
-  }
-  &.olPercent > dt {
-    float: none;
   }
 
   dl > dd > & {
     margin-top: 0.5em;
     margin-bottom: 0;
   }
-}
-dl:not(.dlNewline) > dt {
-  float: left;
-  margin-right: 2ch;
-  min-width: 8ch;
-}
-dl > dd {
-  margin-bottom: .8em;
-  margin-left: var(--indent) !important; /* stupid element overrides */
-  min-height: 2ex;
+
+  &:not(.dlNewline) > dt {
+    float: left;
+    margin-right: 2ch;
+    min-width: 8ch;
+  }
+  & > dd {
+    margin-bottom: .8em;
+    margin-left: var(--indent) !important; /* stupid element overrides */
+    min-height: 2ex;
+  }
 }
 :is(dl.compact, .dlCompact) > dd {
   margin-bottom: 0;
@@ -466,20 +469,22 @@ dl > dd {
 }
 
 /* links */
-a, a[href].selfRef:hover {
+a {
   text-decoration: none;
+  &[href] {
+    color: var(--link-color);
+    &:hover { text-decoration: underline; }
+    &.selfRef {
+      color: var(--text-color);
+      &:hover {
+        text-decoration: none;
+        background-color: var(--highlight-color);
+      }
+    }
+  }
 }
-a[href] {
-  color: var(--link-color);
-}
-a[href].selfRef, .iref + a[href].internal {
+.iref + a[href].internal {
   color: var(--text-color);
-}
-a[href]:hover {
-  text-decoration: underline;
-}
-a[href].selfRef:hover {
-  background-color: var(--highlight-color);
 }
 a.xref:is(.cite, .auto), :is(#status-of-memo, #copyright) a {
   white-space: nowrap;
@@ -515,9 +520,9 @@ img {
 figure {
   margin: 0.5em 0;
   padding: 0;
-}
-figure blockquote {
-  margin: 0.8em 0.4em 0.4em;
+  & blockquote {
+    margin: 0.8em 0.4em 0.4em;
+  }
 }
 figcaption, caption {
   font-style: italic;
@@ -527,17 +532,19 @@ figcaption, caption {
 }
 @media screen {
   /* Auto-collapse boilerplate. */
-  :is(#status-of-memo, #copyright) p {
-    margin: -2px 0;
-    max-height: 0;
-    transition: max-height 2s ease, margin 0.5s ease 0.5s;
-    overflow: hidden;
-  }
-  :is(#status-of-memo, #copyright):hover p,
-  :is(#status-of-memo, #copyright) h2:target ~ p {
-    margin: 0.5em 0;
-    max-height: 500px;
-    overflow: auto;
+  :is(#status-of-memo, #copyright) {
+    & p {
+      margin: -2px 0;
+      max-height: 0;
+      transition: max-height 2s ease, margin 0.5s ease 0.5s;
+      overflow: hidden;
+    }
+    &:hover p,
+    & h2:target ~ p {
+      margin: 0.5em 0;
+      max-height: 500px;
+      overflow: auto;
+    }
   }
   pre, svg {
     display: inline-block;
@@ -587,25 +594,17 @@ table {
   max-width: 100%;
   margin: 0 0 1em;
   border-collapse: collapse;
-}
-table.right {
-  margin-left: auto;
-}
-table.center {
-  margin-left: auto;
-  margin-right: auto;
-}
-table.left {
-  margin-right: auto;
-}
-table .text-left {
-  text-align: left;
-}
-table .text-center {
-  text-align: center;
-}
-table .text-right {
-  text-align: right;
+  &.right { margin-left: auto; }
+  &.center { margin-left: auto; margin-right: auto; }
+  &.left { margin-right: auto; }
+  & .text-left { text-align: left; }
+  & .text-center { text-align: center; }
+  & .text-right { text-align: right; }
+  & caption {
+    margin: 0;
+    padding: 3px 0 3px 1em;
+  }
+  & p { margin: 0; }
 }
 
 thead, tbody {
@@ -625,13 +624,6 @@ th {
 :is(tr:nth-child(2n+1), thead+tbody > tr:nth-child(2n)) > td {
   background-color: var(--highlight-color);
 }
-table caption {
-  margin: 0;
-  padding: 3px 0 3px 1em;
-}
-table p {
-  margin: 0;
-}
 
 /* pilcrow */
 a.pilcrow {
@@ -642,18 +634,16 @@ a.pilcrow {
     color: var(--pilcrow-weak);
     &:hover { text-decoration: none; }
   }
-}
-@media not print {
-  :hover > a.pilcrow, a.pilcrow:focus {
-    opacity: 1;
+  @media not print {
+    :hover > &, &:focus {
+      opacity: 1;
+    }
+    &[href]:hover {
+      color: var(--pilcrow-strong);
+      background-color: transparent;
+    }
   }
-  a.pilcrow[href]:hover {
-    color: var(--pilcrow-strong);
-    background-color: transparent;
-  }
-}
-@media print {
-  a.pilcrow {
+  @media print {
     display: none;
   }
 }
@@ -712,9 +702,9 @@ sub, sup {
   font-size: 0.9em;
   font-style: italic;
   margin-top: 2em;
-}
-.docInfo .prepared {
-  float: right;
+  & .prepared {
+    float: right;
+  }
 }
 
 /* table of contents */
@@ -804,23 +794,27 @@ hr.addr {
   max-width: calc(100% - 16px);
 }
 @media (min-width: 500px) {
-  #authors-addresses > section {
-    column-count: 2;
-    column-gap: 20px;
-  }
-  #authors-addresses > section > h2 {
-    column-span: all;
-  }
-  /* hack for break-inside: avoid-column */
-  #authors-addresses address {
-    display: inline-block;
-    break-inside: avoid-column;
+  #authors-addresses {
+    & > section {
+      column-count: 2;
+      column-gap: 20px;
+    }
+    & > section > h2 {
+      column-span: all;
+    }
+    /* hack for break-inside: avoid-column */
+    & address {
+      display: inline-block;
+      break-inside: avoid-column;
+    }
   }
 }
 
 /* Comments */
-.rfcEditorRemove p:first-of-type {
-  font-style: italic;
+.rfcEditorRemove {
+  & p:first-of-type {
+    font-style: italic;
+  }
 }
 .cref {
   background-color: rgba(249, 232, 105, 0.3);
@@ -831,19 +825,21 @@ hr.addr {
 }
 
 @media screen {
-  #toc nav {
-    font-family: var(--font-title);
-    font-weight: 360;
-    & > ul { margin-bottom: 2em; }
-    & ul {
-      margin: 0 0 0 4px;
-      & :is(p, li) {
-        margin: 2px 0;
+  #toc {
+    & nav {
+      font-family: var(--font-title);
+      font-weight: 360;
+      & > ul { margin-bottom: 2em; }
+      & ul {
+        margin: 0 0 0 4px;
+        & :is(p, li) {
+          margin: 2px 0;
+        }
       }
     }
-  }
-  #toc a.toplink {
-    float: right;
+    & a.toplink {
+      float: right;
+    }
   }
 }
 @media not screen {
@@ -864,54 +860,54 @@ hr.addr {
     margin: 0;
     border-bottom: 1px solid #ccc;
     opacity: 0.6;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 2px 0 2px 6px;
-    padding-right: 1em;
-    font-size: 18px;
-    line-height: 24px;
-    min-width: 190px;
-    text-align: right;
-    background-color: #444;
-    color: white;
-    cursor: pointer;
-    &::before { /* css hamburger */
-      float: right;
-      position: relative;
-      width: 1em;
-      height: 1px;
-      left: -164px;
-      margin: 8px 0 0 0;
-      background: white none repeat scroll 0 0;
-      box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
-      content: "";
+    & h2 {
+      margin: 0;
+      padding: 2px 0 2px 6px;
+      padding-right: 1em;
+      font-size: 18px;
+      line-height: 24px;
+      min-width: 190px;
+      text-align: right;
+      background-color: #444;
+      color: white;
+      cursor: pointer;
+      &::before { /* css hamburger */
+        float: right;
+        position: relative;
+        width: 1em;
+        height: 1px;
+        left: -164px;
+        margin: 8px 0 0 0;
+        background: white none repeat scroll 0 0;
+        box-shadow: 0 4px 0 0 white, 0 8px 0 0 white;
+        content: "";
+      }
     }
-  }
-  #toc nav {
-    display: none;
-    background-color: var(--background-color);
-    padding: 0.5em 1em 1em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    height: calc(100vh - 48px);
-    border-left: 1px solid #ddd;
-  }
-  #toc.active {
-    opacity: 1;
-    & nav { display: block; }
-  }
-  /* Make the collapsed ToC header render white on gray also when it's a link */
-  #toc h2 a,
-  #toc h2 a:is(:link, :focus, :hover),
-  #toc a.toplink,
-  #toc a.toplink:hover {
-    color: white;
-    background-color: #444;
-    text-decoration: none;
-  }
-  #toc a.toplink {
-    margin: 2px 0.5em 0;
+    & nav {
+      display: none;
+      background-color: var(--background-color);
+      padding: 0.5em 1em 1em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      height: calc(100vh - 48px);
+      border-left: 1px solid #ddd;
+    }
+    &.active {
+      opacity: 1;
+      & nav { display: block; }
+    }
+    /* Make the collapsed ToC header render white on gray also when it's a link */
+    & h2 a,
+    & h2 a:is(:link, :focus, :hover),
+    & a.toplink,
+    & a.toplink:hover {
+      color: white;
+      background-color: #444;
+      text-decoration: none;
+    }
+    & a.toplink {
+      margin: 2px 0.5em 0;
+    }
   }
 }
 
@@ -930,26 +926,26 @@ hr.addr {
     margin: 0;
     padding: 0;
     z-index: 1;
-  }
-  #toc h2 {
-    margin: 0;
-    padding: 0.25em 1em 1em 0;
-  }
-  #toc nav {
-    display: block;
-    height: calc(90vh - 84px);
-    bottom: 0;
-    padding: 0.5em 0 2em;
-    overflow: auto;
-    overscroll-behavior: contain;
-    scrollbar-width: thin;
+    & h2 {
+      margin: 0;
+      padding: 0.25em 1em 1em 0;
+    }
+    & nav {
+      display: block;
+      height: calc(90vh - 84px);
+      bottom: 0;
+      padding: 0.5em 0 2em;
+      overflow: auto;
+      overscroll-behavior: contain;
+      scrollbar-width: thin;
+    }
+    & a.toplink {
+      margin: 8px 0.5em 0;
+    }
   }
   img { /* future proofing */
     max-width: 100%;
     height: auto;
-  }
-  #toc a.toplink {
-    margin: 8px 0.5em 0;
   }
 }
 
@@ -965,12 +961,13 @@ hr.addr {
   #n-copyright-notice {
     border-bottom: none;
   }
-  #toc, #n-introduction {
-    page-break-before: always;
-  }
   #toc {
+    page-break-before: always;
     border-top: none;
     padding-top: 0;
+  }
+  #n-introduction {
+    page-break-before: always;
   }
   figure, pre, .vcard {
     page-break-inside: avoid;
@@ -1032,17 +1029,19 @@ hr.addr {
 }
 
 /* SVG Trick: a prefix match works because only black and white are allowed */
-svg :is([stroke="black"], [stroke^="#000"]) {
-  stroke: var(--text-color);
-}
-svg :is([stroke="white"], [stroke^="#fff"]) {
-  stroke: var(--background-color);
-}
-svg :is([fill="black"], [fill^="#000"], :not([fill])) {
-  fill: var(--text-color);
-}
-svg :is([fill="white"], [fill^="#fff"]) {
-  fill: var(--background-color);
+svg {
+  & :is([stroke="black"], [stroke^="#000"]) {
+    stroke: var(--text-color);
+  }
+  & :is([stroke="white"], [stroke^="#fff"]) {
+    stroke: var(--background-color);
+  }
+  & :is([fill="black"], [fill^="#000"], :not([fill])) {
+    fill: var(--text-color);
+  }
+  & :is([fill="white"], [fill^="#fff"]) {
+    fill: var(--background-color);
+  }
 }
 </style>
 
@@ -1052,11 +1051,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">BGP TERMS</td>
-<td class="right">April 2026</td>
+<td class="right">July 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Fiebig &amp; Tremmel</td>
-<td class="center">Expires 5 October 2026</td>
+<td class="center">Expires 19 January 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1069,12 +1068,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-grow-routing-ops-terms-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-04-03" class="published">3 April 2026</time>
+<time datetime="2026-07-18" class="published">18 July 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Informational</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-10-05">5 October 2026</time></dd>
+<dd class="expires"><time datetime="2027-01-19">19 January 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1117,7 +1116,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 5 October 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 January 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1268,76 +1267,80 @@ svg :is([fill="white"], [fill^="#fff"]) {
         <dd style="margin-left: 1.5em" id="section-3-2.4">Autonomous System Number<a href="#section-3-2.4" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.5">CE:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.6">Customer Edge Router<a href="#section-3-2.6" class="pilcrow">¶</a>
+<dt id="section-3-2.5">BGP:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.6">Border Gateway Protocol<a href="#section-3-2.6" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.7">DFZ:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.8">Default Free Zone<a href="#section-3-2.8" class="pilcrow">¶</a>
+<dt id="section-3-2.7">CE:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.8">Customer Edge Router<a href="#section-3-2.8" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.9">GRT:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.10">Global Routing Table<a href="#section-3-2.10" class="pilcrow">¶</a>
+<dt id="section-3-2.9">DFZ:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.10">Default Free Zone<a href="#section-3-2.10" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.11">IRR:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.12">Internet Routing Registry<a href="#section-3-2.12" class="pilcrow">¶</a>
+<dt id="section-3-2.11">GRT:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.12">Global Routing Table<a href="#section-3-2.12" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.13">IXP:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.14">Internet Exchange Point<a href="#section-3-2.14" class="pilcrow">¶</a>
+<dt id="section-3-2.13">IRR:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.14">Internet Routing Registry<a href="#section-3-2.14" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.15">LIR:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.16">Local Internet Registry<a href="#section-3-2.16" class="pilcrow">¶</a>
+<dt id="section-3-2.15">IXP:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.16">Internet Exchange Point<a href="#section-3-2.16" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.17">NIR:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.18">National Internet Registry<a href="#section-3-2.18" class="pilcrow">¶</a>
+<dt id="section-3-2.17">LIR:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.18">Local Internet Registry<a href="#section-3-2.18" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.19">RIR:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.20">Regional Internet Registry<a href="#section-3-2.20" class="pilcrow">¶</a>
+<dt id="section-3-2.19">NIR:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.20">National Internet Registry<a href="#section-3-2.20" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.21">NLRI:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.22">Network Layer Reachability Information<a href="#section-3-2.22" class="pilcrow">¶</a>
+<dt id="section-3-2.21">RIR:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.22">Regional Internet Registry<a href="#section-3-2.22" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.23">OTC:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.24">Only To Customer BGP Attribute<a href="#section-3-2.24" class="pilcrow">¶</a>
+<dt id="section-3-2.23">NLRI:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.24">Network Layer Reachability Information<a href="#section-3-2.24" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.25">P:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.26">Provider Router<a href="#section-3-2.26" class="pilcrow">¶</a>
+<dt id="section-3-2.25">OTC:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.26">Only To Customer BGP Attribute<a href="#section-3-2.26" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.27">PE:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.28">Provider Edge Router<a href="#section-3-2.28" class="pilcrow">¶</a>
+<dt id="section-3-2.27">P:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.28">Provider Router<a href="#section-3-2.28" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.29">PMTUD:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.30">Path MTU Discovery<a href="#section-3-2.30" class="pilcrow">¶</a>
+<dt id="section-3-2.29">PE:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.30">Provider Edge Router<a href="#section-3-2.30" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.31">uRPF:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.32">Unicast Reverse Path Forwarding<a href="#section-3-2.32" class="pilcrow">¶</a>
+<dt id="section-3-2.31">PMTUD:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.32">Path MTU Discovery<a href="#section-3-2.32" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.33">VRF:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.34">Virtual Routing and Forwarding<a href="#section-3-2.34" class="pilcrow">¶</a>
+<dt id="section-3-2.33">uRPF:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.34">Unicast Reverse Path Forwarding<a href="#section-3-2.34" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.35">RPKI:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.36">Resource Public Key Infrastructure<a href="#section-3-2.36" class="pilcrow">¶</a>
+<dt id="section-3-2.35">VRF:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.36">Virtual Routing and Forwarding<a href="#section-3-2.36" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.37">ROA:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.38">Route Origin Authorization<a href="#section-3-2.38" class="pilcrow">¶</a>
+<dt id="section-3-2.37">RPKI:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.38">Resource Public Key Infrastructure<a href="#section-3-2.38" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
-<dt id="section-3-2.39">ROV:</dt>
-        <dd style="margin-left: 1.5em" id="section-3-2.40">Route Origin Validation<a href="#section-3-2.40" class="pilcrow">¶</a>
+<dt id="section-3-2.39">ROA:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.40">Route Origin Authorization<a href="#section-3-2.40" class="pilcrow">¶</a>
+</dd>
+        <dd class="break"></dd>
+<dt id="section-3-2.41">ROV:</dt>
+        <dd style="margin-left: 1.5em" id="section-3-2.42">Route Origin Validation<a href="#section-3-2.42" class="pilcrow">¶</a>
 </dd>
       <dd class="break"></dd>
 </dl>
@@ -1369,119 +1372,126 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-2.5">AS Confederation Identifier:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.6">{is according to <span>[<a href="#RFC5065" class="cite xref">RFC5065</a>]</span> an externally visible autonomous system number that identifies a BGP confederation as a whole.<a href="#section-4.1-2.6" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.6">is according to <span>[<a href="#RFC5065" class="cite xref">RFC5065</a>]</span> an externally visible autonomous system number that identifies a BGP confederation as a whole.<a href="#section-4.1-2.6" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.1-2.7">Bidirectional Forwarding Detection:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.8">BFD is a protocol to check if a configured neighbor is alive. For this packets are sent quite rapidly between two systems (rapidly means in the 100ms time range), if no packets are received from the neighbor for a given time, the neighbor is considered to be no longer reachable which is then signaled to other protocols like BGP. BFD is defined in <span>[<a href="#RFC5880" class="cite xref">RFC5880</a>]</span>, its application on IPv4 and IPv6 is defined in <span>[<a href="#RFC5881" class="cite xref">RFC5881</a>]</span>. <span>[<a href="#RFC5882" class="cite xref">RFC5882</a>]</span> is about the general application of BFD and <span>[<a href="#RFC5883" class="cite xref">RFC5883</a>]</span> describes BFD on multihop paths.}<a href="#section-4.1-2.8" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.8">BFD is a protocol used by BGP to check if a configured neighbor is reachable. Packets are sent rapidly between two systems (rapidly means in the 100ms time range). If no packets are received from the neighbor for a given time, the neighbor is considered to be no longer reachable. This lack of reachability is then signaled to other protocols like BGP. BFD is defined in <span>[<a href="#RFC5880" class="cite xref">RFC5880</a>]</span>. Its application for IPv4 and IPv6 is defined in <span>[<a href="#RFC5881" class="cite xref">RFC5881</a>]</span>. <span>[<a href="#RFC5882" class="cite xref">RFC5882</a>]</span> is about the general application of BFD and <span>[<a href="#RFC5883" class="cite xref">RFC5883</a>]</span> describes BFD on multihop paths.<a href="#section-4.1-2.8" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.9">BGP Path Attribute:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.10">BGP update messages for prefixes contain not only the AS-Path but also other attributes. BGP Path Attributes fall into four different categories: well-known mandatory, well-known discretionary, optional transitive, optional non-transitive.<a href="#section-4.1-2.10" class="pilcrow">¶</a>
+<dt id="section-4.1-2.9">BGP</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.10">Border Gateway Protocol, Version 4 <span>[<a href="#RFC4271" class="cite xref">RFC4271</a>]</span>.  BGP is the routing protocol used for Internet (IPv4 and IPv6) routing.  It is also used by many other applications.<a href="#section-4.1-2.10" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.11">Well-known mandatory BGP Path Attribute:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.12">A BGP Path Attribute that needs to be understood by all BGP implementations and must be included in all NLRI.<a href="#section-4.1-2.12" class="pilcrow">¶</a>
+<dt id="section-4.1-2.11">BGP Path Attribute:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.12">BGP update messages for prefixes contain not only the AS-Path but also other attributes. BGP Path Attributes fall into four different categories: well-known mandatory, well-known discretionary, optional transitive, optional non-transitive.<a href="#section-4.1-2.12" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.13">Well-known discretionary BGP Path Attribute:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.14">A BGP Path Attribute that needs to be understood by all BGP implementations but is not required to be included in NLRI.<a href="#section-4.1-2.14" class="pilcrow">¶</a>
+<dt id="section-4.1-2.13">Well-known mandatory BGP Path Attribute:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.14">A BGP Path Attribute that needs to be understood by all BGP implementations and must be included in all BGP routes.<a href="#section-4.1-2.14" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.15">Optional transitive BGP Path Attribute:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.16">Optional transitive BGP Path Attributes  are not required to be present in NLRI, do not have to be understood by all implementations, but should remain in BGP messages and should forwarded to other BGP speakers, even if their semantics are not understood by an implementation.<a href="#section-4.1-2.16" class="pilcrow">¶</a>
+<dt id="section-4.1-2.15">Well-known discretionary BGP Path Attribute:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.16">A BGP Path Attribute that needs to be understood by all BGP implementations but is not required to be included in BGP routes.<a href="#section-4.1-2.16" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.17">Optional non-transitive BGP Path Attribute:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.18">Optional non-transitive BGP Path Attributes are similar to Optional transitive BGP Path Attributes, but must not be included in NLRI send to external BGP speakers.<a href="#section-4.1-2.18" class="pilcrow">¶</a>
+<dt id="section-4.1-2.17">Optional transitive BGP Path Attribute:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.18">Optional transitive BGP Path Attributes are conditionally carried in BGP routes based on their defining feature.  Implementations that do not understand an optional transitive Path Attribute are expected to propagate the attribute to their neighbors.<a href="#section-4.1-2.18" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.19">Enhanced Interior Gateway Routing Protocol:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.20">EIGRP is a IGP defined by Cisco in the 1980s to distribute routing information within a network. It was later openly specified in <span>[<a href="#RFC7868" class="cite xref">RFC7868</a>]</span>.<a href="#section-4.1-2.20" class="pilcrow">¶</a>
+<dt id="section-4.1-2.19">Optional non-transitive BGP Path Attribute:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.20">Optional non-transitive BGP Path Attributes are conditionally carried in BGP routes based on their defining feature.  Impelementations that do not understand an optional non-transitive Path Attribute will discard them and they are not propagated to their neighbors as a result.<a href="#section-4.1-2.20" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.21">Exterior Gateway Protocol:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.22">EGP was a predecessor to BGP. First defined 1982 in <span>[<a href="#RFC827" class="cite xref">RFC827</a>]</span> it became obsolete once BGP was widely used (around 1994). Additionally, as a general term, it is used for protocols used to exchange routing information between ASes. In that meaning, BGP is currently the only EGP.<a href="#section-4.1-2.22" class="pilcrow">¶</a>
+<dt id="section-4.1-2.21">Enhanced Interior Gateway Routing Protocol:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.22">EIGRP is a IGP defined by Cisco in the 1980s to distribute routing information within a network. It was later openly specified in <span>[<a href="#RFC7868" class="cite xref">RFC7868</a>]</span>.<a href="#section-4.1-2.22" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.23">Interior Gateway Protocol:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.24">An IGP is a protocol running inside an Autonomous System to distribute the IP addresses of router interfaces.<a href="#section-4.1-2.24" class="pilcrow">¶</a>
+<dt id="section-4.1-2.23">Exterior Gateway Protocol:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.24">EGP was a predecessor to BGP. First defined 1982 in <span>[<a href="#RFC827" class="cite xref">RFC827</a>]</span> it became obsolete once BGP was widely used (around 1994). Additionally, as a general term, it is used for protocols used to exchange routing information between ASes. In that meaning, BGP is currently the only EGP.<a href="#section-4.1-2.24" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.25">IS-IS:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.26">The Intermediate System to Intermediate System protocol is an IGP running directly on top of layer 2. It is used to distribute interface addresses within a network<a href="#section-4.1-2.26" class="pilcrow">¶</a>
+<dt id="section-4.1-2.25">Interior Gateway Protocol:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.26">An IGP is a protocol running inside an Autonomous System. It is typically used to distribute the IP addresses of router interfaces.<a href="#section-4.1-2.26" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.27">Local Internet Registry:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.28">An LIR is an organzation/company which receives IP address resources or Autonomous System Numbers as an allocation from a Regional Internet Registry and assigns these resources to end users.<a href="#section-4.1-2.28" class="pilcrow">¶</a>
+<dt id="section-4.1-2.27">IS-IS:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.28">The Intermediate System to Intermediate System protocol is an IGP running directly on top of layer 2. It is typically used to distribute interface addresses within a network.  IS-IS was originally defined by OSI in ISO DP 10589.  It was later published in the IETF in <span>[<a href="#RFC1195" class="cite xref">RFC1195</a>]</span>.<a href="#section-4.1-2.28" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.29">Open Shortest Path First:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.30">OSPF is a link state routing protocol. It is used as an IGP.<a href="#section-4.1-2.30" class="pilcrow">¶</a>
+<dt id="section-4.1-2.29">Local Internet Registry:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.30">An LIR is an organzation/company which receives IP address resources or Autonomous System Numbers as an allocation from a Regional Internet Registry and assigns these resources to end users.<a href="#section-4.1-2.30" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.31">Regional Internet Registry:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.32">An RIR is an entity responsible for allocating IP addresses and AS numbers to NIRs and LIRs. At the moment, currently, the five RIRs are Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC, each being responsible for a different region.<a href="#section-4.1-2.32" class="pilcrow">¶</a>
+<dt id="section-4.1-2.31">Open Shortest Path First:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.32">OSPF is a link state routing protocol. It is used as an IGP. It was first specified in <span>[<a href="#RFC2328" class="cite xref">RFC2328</a>]</span>.<a href="#section-4.1-2.32" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.33">Routing Information Protocol:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.34">RIP is an old and by now obsolete protocol which was used to distribute routing information. RIP is no longer in use<a href="#section-4.1-2.34" class="pilcrow">¶</a>
+<dt id="section-4.1-2.33">Regional Internet Registry:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.34">A RIR is an entity responsible for allocating IP addresses and AS numbers to NIRs and LIRs. There are currently five RIRs: Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC. Each are responsible for a different region.<a href="#section-4.1-2.34" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.35">RIPE:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.36">Is shorthand for Réseaux IP Européens, which is the community of network operators in the RIPE NCC's service region. See also RIPE NCC.<a href="#section-4.1-2.36" class="pilcrow">¶</a>
+<dt id="section-4.1-2.35">Routing Information Protocol:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.36">RIP is an old and by now obsolete protocol which was used to distribute routing information. RIP is no longer in use. It was originally defined in <span>[<a href="#RFC1058" class="cite xref">RFC1058</a>]</span>.<a href="#section-4.1-2.36" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.37">RIPE NCC:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.38">The RIPE NCC, sometimes also just called the NCC, is the RIR for 75 countries spanning Europe, parts of central Asia, and the Middle East.<a href="#section-4.1-2.38" class="pilcrow">¶</a>
+<dt id="section-4.1-2.37">RIPE:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.38">Is shorthand for Réseaux IP Européens, which is the community of network operators in the RIPE NCC's service region. See also RIPE NCC.<a href="#section-4.1-2.38" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.39">Operator:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.40">Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.<a href="#section-4.1-2.40" class="pilcrow">¶</a>
+<dt id="section-4.1-2.39">RIPE NCC:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.40">The RIPE NCC, sometimes also just called the NCC, is the RIR for 75 countries spanning Europe, parts of central Asia, and the Middle East.<a href="#section-4.1-2.40" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.41">Router:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.42">In this document, router always refers to a BGP speaker.<a href="#section-4.1-2.42" class="pilcrow">¶</a>
+<dt id="section-4.1-2.41">Operator:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.42">Individual, group of people, or organizational unit responsible for operating BGP speakers, i.e., making administrative changes, as well as defining and setting policies for all BGP speakers within an organization.<a href="#section-4.1-2.42" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.43">Customer Edge (CE) Router:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.44">Router at the customer's premises, may be connected to PE routers.<a href="#section-4.1-2.44" class="pilcrow">¶</a>
+<dt id="section-4.1-2.43">Router:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.44">In this document, router always refers to a BGP speaker.<a href="#section-4.1-2.44" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.45">Cone:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.46">The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.<a href="#section-4.1-2.46" class="pilcrow">¶</a>
+<dt id="section-4.1-2.45">Customer Edge (CE) Router:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.46">Router at the customer's premises, may be connected to PE routers.<a href="#section-4.1-2.46" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.47">Global Routing Table:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.48">The set of all routes for an address family that have been announced to external BGP Neighbors.<a href="#section-4.1-2.48" class="pilcrow">¶</a>
+<dt id="section-4.1-2.47">Cone:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.48">The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.<a href="#section-4.1-2.48" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd><dt id="section-4.1-2.49">Global Routing Table:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.50">The set of all routes for an address family that have been announced to external BGP Neighbors.<a href="#section-4.1-2.50" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.49">Route Selection:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.50">The process when a BGP speaker applies the locally configured policy to select the best route from multiple available options according to that policy.<a href="#section-4.1-2.50" class="pilcrow">¶</a>
+<dt id="section-4.1-2.51">Route Selection:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.52">The process when a BGP speaker applies the locally configured policy to select the best route from multiple available options according to that policy. See "Decision Process" in <span>[<a href="#RFC4271" class="cite xref">RFC4271</a>]</span>.<a href="#section-4.1-2.52" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.51">Network Layer Reachability Information:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.52">General description for network reachability information. In the context of BGP, this usually refers to the complete set of information (prefix, next-hop, attributes, etc.) contained in a BGP update message.<a href="#section-4.1-2.52" class="pilcrow">¶</a>
+<dt id="section-4.1-2.53">Network Layer Reachability Information:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.54">General description for network destinations. Often called "prefixes".<a href="#section-4.1-2.54" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.53">Default Free Zone:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.54">Part of the Internet where routers do not carry default routes.<a href="#section-4.1-2.54" class="pilcrow">¶</a>
+<dt id="section-4.1-2.55">Default Free Zone:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.56">Part of the Internet where routers do not carry default routes.<a href="#section-4.1-2.56" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.55">Round Trip Time:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.56">The Round Tripe TIme between two hosts is the time measured in seconds or milliseconds it takes from sending out a packet until receiving a reply.<a href="#section-4.1-2.56" class="pilcrow">¶</a>
+<dt id="section-4.1-2.57">Round Trip Time:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.58">The Round Trip Time between two hosts is the time measured (typically in seconds or milliseconds) that it takes from sending out a packet until receiving a reply.<a href="#section-4.1-2.58" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.57">TCP:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.58">The Transmission Control Protocol is part of the TCP/IP protocol stack. It is a connection oriented protocol taking care that everything which is sent is also received.<a href="#section-4.1-2.58" class="pilcrow">¶</a>
+<dt id="section-4.1-2.59">TCP:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.60">The Transmission Control Protocol is part of the TCP/IP protocol stack. It is a connection oriented protocol taking care that everything which is sent is also received.<a href="#section-4.1-2.60" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.59">MD5:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.60">MD5 is a by now obsolete hashing algorithm, used to generate a checksum on given data. However, it is still regularly used to secure BGP sessions, even though it should be replaced by now.<a href="#section-4.1-2.60" class="pilcrow">¶</a>
+<dt id="section-4.1-2.61">TCP-AO:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.62">The Transmission Control Protocol Authentication Option <span>[<a href="#RFC5925" class="cite xref">RFC5925</a>]</span> is used provide authentication and integrity for BGP.<a href="#section-4.1-2.62" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.1-2.61">Time To Live:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.1-2.62">The TTL is a counter in the IP header which is decreased every time a packet is forwarded by a router. If this counter hits zero, the packet is discarded and an ICMP Time Exceeded message is sent back to the originator of the packet.<a href="#section-4.1-2.62" class="pilcrow">¶</a>
+<dt id="section-4.1-2.63">TCP-MD5:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.64">MD5 is a hashing algorithm, used to generate a checksum over given data. In the context of BGP, it typically refers to the obsolete TCP-MD5 feature <span>[<a href="#RFC2385" class="cite xref">RFC2385</a>]</span>. It has been replaced by TCP-AO.<a href="#section-4.1-2.64" class="pilcrow">¶</a>
+</dd>
+          <dd class="break"></dd>
+<dt id="section-4.1-2.65">Time To Live:</dt>
+          <dd style="margin-left: 1.5em" id="section-4.1-2.66">The TTL is a counter in the IPv4 header which is decreased every time a packet is forwarded by a router. If this counter hits zero, the packet is discarded and an ICMP Time Exceeded message is sent back to the originator of the packet. It was replaced by the Hop Limit field in IPv6.<a href="#section-4.1-2.66" class="pilcrow">¶</a>
 </dd>
         <dd class="break"></dd>
 </dl>
@@ -1504,7 +1514,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.2-2.5">Cone:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.2-2.6">The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.<a href="#section-4.2-2.6" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.2-2.6">The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes. Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.<a href="#section-4.2-2.6" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.2-2.7">Network edge:</dt>
@@ -1512,7 +1522,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.2-2.9">Mutual Transit:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.2-2.10">When two directly connected ASes both advertise a BGP fulltable to each other. (See: <span>[<a href="#I-D.ietf-sidrops-aspa-verification" class="cite xref">I-D.ietf-sidrops-aspa-verification</a>]</span>)<a href="#section-4.2-2.10" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.2-2.10">When two directly connected ASes both advertise a full BGP table to each other. (See: <span>[<a href="#I-D.ietf-sidrops-aspa-verification" class="cite xref">I-D.ietf-sidrops-aspa-verification</a>]</span>)<a href="#section-4.2-2.10" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.2-2.11">Upstream Provider / Transit Provider:</dt>
@@ -1599,11 +1609,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.3-2.17">Peer:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.18">A BGP neighbor, if not used to describe a relationship.<a href="#section-4.3-2.18" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.18">A BGP neighbor, if not used to describe the peering relationship.<a href="#section-4.3-2.18" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.3-2.19">Prepending:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.20">Inserting an ASes into the AS_PATH multiple times to influence route selection.<a href="#section-4.3-2.20" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-4.3-2.20">Attaching ASes to the AS_PATH at the left hand side, possibly multiple times, to influence route selection.<a href="#section-4.3-2.20" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.3-2.21">Traffic Engineering:</dt>
@@ -1611,7 +1621,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
           <dd class="break"></dd>
 <dt id="section-4.3-2.23">Converging:</dt>
-          <dd style="margin-left: 1.5em" id="section-4.3-2.24">Used to describe the process of a BGP speaker evaluating all routes and finding the preferred route for each visible prefix.
+          <dd style="margin-left: 1.5em" id="section-4.3-2.24">Used to describe the process of a BGP speaker learning and evaluating all routes from its neighbors, and finding the preferred route for each destination.
                         Reconverging is often also used to describe an ongoing selection process reevaluating all routes sent by neighbors, e.g., after a loss of connectivity to one or multiple neighbors.<a href="#section-4.3-2.24" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
@@ -1690,7 +1700,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
           <dd style="margin-left: 1.5em" id="section-4.4-2.18">An RPKI validator is a piece of software that fetches RPKI certificates and ROAs from from RPKI publication points, checks the signatures of the certificates and ROAs.<a href="#section-4.4-2.18" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-4.4-2.19">RTR Protocol</dt>
+<dt id="section-4.4-2.19">RPKI-RTR Protocol</dt>
           <dd style="margin-left: 1.5em" id="section-4.4-2.20">The RPKI to Router Protocol is used to communicate a validator's view on the RPKI to routers, providing and maintaining a list of certified prefixes and their allowed originating AS numbers. RTR may be an independent daemon, or can also be integrated in an RPKI validator.<a href="#section-4.4-2.20" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
@@ -1748,7 +1758,27 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dl class="references">
 <dt id="RFC827">[RFC827]</dt>
         <dd>
-<span class="refAuthor">Rosen, E.</span>, <span class="refTitle">"Exterior Gateway Protocol (EGP)"</span>, <span class="seriesInfo">RFC 827</span>, <span class="seriesInfo">DOI 10.17487/RFC0827</span>, <time datetime="1982-10" class="refDate">October 1982</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc827">https://www.rfc-editor.org/info/rfc827</a>&gt;</span>. </dd>
+<span class="refAuthor">Rosen, E.</span>, <span class="refTitle">"Exterior Gateway Protocol (EGP)"</span>, <span class="seriesInfo">RFC 827</span>, <span class="seriesInfo">DOI 10.17487/RFC827</span>, <time datetime="1982-10" class="refDate">October 1982</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc827">https://www.rfc-editor.org/info/rfc827</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1058">[RFC1058]</dt>
+        <dd>
+<span class="refAuthor">Hedrick, C.</span>, <span class="refTitle">"Routing Information Protocol"</span>, <span class="seriesInfo">RFC 1058</span>, <span class="seriesInfo">DOI 10.17487/RFC1058</span>, <time datetime="1988-06" class="refDate">June 1988</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1058">https://www.rfc-editor.org/info/rfc1058</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC1195">[RFC1195]</dt>
+        <dd>
+<span class="refAuthor">Callon, R.</span>, <span class="refTitle">"Use of OSI IS-IS for routing in TCP/IP and dual environments"</span>, <span class="seriesInfo">RFC 1195</span>, <span class="seriesInfo">DOI 10.17487/RFC1195</span>, <time datetime="1990-12" class="refDate">December 1990</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc1195">https://www.rfc-editor.org/info/rfc1195</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2328">[RFC2328]</dt>
+        <dd>
+<span class="refAuthor">Moy, J.</span>, <span class="refTitle">"OSPF Version 2"</span>, <span class="seriesInfo">STD 54</span>, <span class="seriesInfo">RFC 2328</span>, <span class="seriesInfo">DOI 10.17487/RFC2328</span>, <time datetime="1998-04" class="refDate">April 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2328">https://www.rfc-editor.org/info/rfc2328</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2385">[RFC2385]</dt>
+        <dd>
+<span class="refAuthor">Heffernan, A.</span>, <span class="refTitle">"Protection of BGP Sessions via the TCP MD5 Signature Option"</span>, <span class="seriesInfo">RFC 2385</span>, <span class="seriesInfo">DOI 10.17487/RFC2385</span>, <time datetime="1998-08" class="refDate">August 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2385">https://www.rfc-editor.org/info/rfc2385</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC4271">[RFC4271]</dt>
+        <dd>
+<span class="refAuthor">Rekhter, Y., Ed.</span>, <span class="refAuthor">Li, T., Ed.</span>, and <span class="refAuthor">S. Hares, Ed.</span>, <span class="refTitle">"A Border Gateway Protocol 4 (BGP-4)"</span>, <span class="seriesInfo">RFC 4271</span>, <span class="seriesInfo">DOI 10.17487/RFC4271</span>, <time datetime="2006-01" class="refDate">January 2006</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc4271">https://www.rfc-editor.org/info/rfc4271</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5065">[RFC5065]</dt>
         <dd>
@@ -1769,6 +1799,10 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dt id="RFC5883">[RFC5883]</dt>
         <dd>
 <span class="refAuthor">Katz, D.</span> and <span class="refAuthor">D. Ward</span>, <span class="refTitle">"Bidirectional Forwarding Detection (BFD) for Multihop Paths"</span>, <span class="seriesInfo">RFC 5883</span>, <span class="seriesInfo">DOI 10.17487/RFC5883</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5883">https://www.rfc-editor.org/info/rfc5883</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC5925">[RFC5925]</dt>
+        <dd>
+<span class="refAuthor">Touch, J.</span>, <span class="refAuthor">Mankin, A.</span>, and <span class="refAuthor">R. Bonica</span>, <span class="refTitle">"The TCP Authentication Option"</span>, <span class="seriesInfo">RFC 5925</span>, <span class="seriesInfo">DOI 10.17487/RFC5925</span>, <time datetime="2010-06" class="refDate">June 2010</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5925">https://www.rfc-editor.org/info/rfc5925</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7454">[RFC7454]</dt>
         <dd>

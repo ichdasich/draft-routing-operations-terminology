@@ -5,8 +5,8 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                       TUW
 Intended status: Informational                                W. Tremmel
-Expires: 5 October 2026                                           DE-CIX
-                                                            3 April 2026
+Expires: 19 January 2027                                          DE-CIX
+                                                            18 July 2026
 
 
         Currently Used Terminology in Global Routing Operations
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 October 2026.
+   This Internet-Draft will expire on 19 January 2027.
 
 Copyright Notice
 
@@ -123,6 +123,9 @@ Table of Contents
    ASN:
       Autonomous System Number
 
+   BGP:
+      Border Gateway Protocol
+
    CE:
       Customer Edge Router
 
@@ -198,18 +201,24 @@ Table of Contents
       A 32-bit number uniquely identifying an Autonomous System.
 
    AS Confederation Identifier:
-      {is according to [RFC5065] an externally visible autonomous system
+      is according to [RFC5065] an externally visible autonomous system
       number that identifies a BGP confederation as a whole.
 
    Bidirectional Forwarding Detection:
-      BFD is a protocol to check if a configured neighbor is alive.  For
-      this packets are sent quite rapidly between two systems (rapidly
-      means in the 100ms time range), if no packets are received from
+      BFD is a protocol used by BGP to check if a configured neighbor is
+      reachable.  Packets are sent rapidly between two systems (rapidly
+      means in the 100ms time range).  If no packets are received from
       the neighbor for a given time, the neighbor is considered to be no
-      longer reachable which is then signaled to other protocols like
-      BGP.  BFD is defined in [RFC5880], its application on IPv4 and
-      IPv6 is defined in [RFC5881].  [RFC5882] is about the general
-      application of BFD and [RFC5883] describes BFD on multihop paths.}
+      longer reachable.  This lack of reachability is then signaled to
+      other protocols like BGP.  BFD is defined in [RFC5880].  Its
+      application for IPv4 and IPv6 is defined in [RFC5881].  [RFC5882]
+      is about the general application of BFD and [RFC5883] describes
+      BFD on multihop paths.
+
+   BGP
+      Border Gateway Protocol, Version 4 [RFC4271].  BGP is the routing
+      protocol used for Internet (IPv4 and IPv6) routing.  It is also
+      used by many other applications.
 
    BGP Path Attribute:
       BGP update messages for prefixes contain not only the AS-Path but
@@ -219,23 +228,24 @@ Table of Contents
 
    Well-known mandatory BGP Path Attribute:
       A BGP Path Attribute that needs to be understood by all BGP
-      implementations and must be included in all NLRI.
+      implementations and must be included in all BGP routes.
 
    Well-known discretionary BGP Path Attribute:
       A BGP Path Attribute that needs to be understood by all BGP
-      implementations but is not required to be included in NLRI.
+      implementations but is not required to be included in BGP routes.
 
    Optional transitive BGP Path Attribute:
-      Optional transitive BGP Path Attributes are not required to be
-      present in NLRI, do not have to be understood by all
-      implementations, but should remain in BGP messages and should
-      forwarded to other BGP speakers, even if their semantics are not
-      understood by an implementation.
+      Optional transitive BGP Path Attributes are conditionally carried
+      in BGP routes based on their defining feature.  Implementations
+      that do not understand an optional transitive Path Attribute are
+      expected to propagate the attribute to their neighbors.
 
    Optional non-transitive BGP Path Attribute:
-      Optional non-transitive BGP Path Attributes are similar to
-      Optional transitive BGP Path Attributes, but must not be included
-      in NLRI send to external BGP speakers.
+      Optional non-transitive BGP Path Attributes are conditionally
+      carried in BGP routes based on their defining feature.
+      Impelementations that do not understand an optional non-transitive
+      Path Attribute will discard them and they are not propagated to
+      their neighbors as a result.
 
    Enhanced Interior Gateway Routing Protocol:
       EIGRP is a IGP defined by Cisco in the 1980s to distribute routing
@@ -250,13 +260,16 @@ Table of Contents
       is currently the only EGP.
 
    Interior Gateway Protocol:
-      An IGP is a protocol running inside an Autonomous System to
-      distribute the IP addresses of router interfaces.
+      An IGP is a protocol running inside an Autonomous System.  It is
+      typically used to distribute the IP addresses of router
+      interfaces.
 
    IS-IS:
       The Intermediate System to Intermediate System protocol is an IGP
-      running directly on top of layer 2.  It is used to distribute
-      interface addresses within a network
+      running directly on top of layer 2.  It is typically used to
+      distribute interface addresses within a network.  IS-IS was
+      originally defined by OSI in ISO DP 10589.  It was later published
+      in the IETF in [RFC1195].
 
    Local Internet Registry:
       An LIR is an organzation/company which receives IP address
@@ -265,17 +278,19 @@ Table of Contents
       users.
 
    Open Shortest Path First:
-      OSPF is a link state routing protocol.  It is used as an IGP.
+      OSPF is a link state routing protocol.  It is used as an IGP.  It
+      was first specified in [RFC2328].
 
    Regional Internet Registry:
-      An RIR is an entity responsible for allocating IP addresses and AS
-      numbers to NIRs and LIRs.  At the moment, currently, the five RIRs
-      are Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC, each being
-      responsible for a different region.
+      A RIR is an entity responsible for allocating IP addresses and AS
+      numbers to NIRs and LIRs.  There are currently five RIRs: Afrinic,
+      APNIC, ARIN, LACNIC, and RIPE NCC.  Each are responsible for a
+      different region.
 
    Routing Information Protocol:
       RIP is an old and by now obsolete protocol which was used to
-      distribute routing information.  RIP is no longer in use
+      distribute routing information.  RIP is no longer in use.  It was
+      originally defined in [RFC1058].
 
    RIPE:
       Is shorthand for Réseaux IP Européens, which is the community of
@@ -312,37 +327,40 @@ Table of Contents
    Route Selection:
       The process when a BGP speaker applies the locally configured
       policy to select the best route from multiple available options
-      according to that policy.
+      according to that policy.  See "Decision Process" in [RFC4271].
 
    Network Layer Reachability Information:
-      General description for network reachability information.  In the
-      context of BGP, this usually refers to the complete set of
-      information (prefix, next-hop, attributes, etc.) contained in a
-      BGP update message.
+      General description for network destinations.  Often called
+      "prefixes".
 
    Default Free Zone:
       Part of the Internet where routers do not carry default routes.
 
    Round Trip Time:
-      The Round Tripe TIme between two hosts is the time measured in
-      seconds or milliseconds it takes from sending out a packet until
-      receiving a reply.
+      The Round Trip Time between two hosts is the time measured
+      (typically in seconds or milliseconds) that it takes from sending
+      out a packet until receiving a reply.
 
    TCP:
       The Transmission Control Protocol is part of the TCP/IP protocol
       stack.  It is a connection oriented protocol taking care that
       everything which is sent is also received.
 
-   MD5:
-      MD5 is a by now obsolete hashing algorithm, used to generate a
-      checksum on given data.  However, it is still regularly used to
-      secure BGP sessions, even though it should be replaced by now.
+   TCP-AO:
+      The Transmission Control Protocol Authentication Option [RFC5925]
+      is used provide authentication and integrity for BGP.
+
+   TCP-MD5:
+      MD5 is a hashing algorithm, used to generate a checksum over given
+      data.  In the context of BGP, it typically refers to the obsolete
+      TCP-MD5 feature [RFC2385].  It has been replaced by TCP-AO.
 
    Time To Live:
-      The TTL is a counter in the IP header which is decreased every
+      The TTL is a counter in the IPv4 header which is decreased every
       time a packet is forwarded by a router.  If this counter hits
       zero, the packet is discarded and an ICMP Time Exceeded message is
-      sent back to the originator of the packet.
+      sent back to the originator of the packet.  It was replaced by the
+      Hop Limit field in IPv6.
 
 4.2.  Neighbor Relation Terms
 
@@ -360,7 +378,7 @@ Table of Contents
 
    Cone:
       The set of ASes who are either direct downstreams of an AS, or in
-      the cone of any of those ASes; Depending on the context this also
+      the cone of any of those ASes.  Depending on the context this also
       includes the joint set of prefixes that may be originated by ASes
       in a cone.
 
@@ -369,8 +387,8 @@ Table of Contents
       of other networks.
 
    Mutual Transit:
-      When two directly connected ASes both advertise a BGP fulltable to
-      each other.  (See: [I-D.ietf-sidrops-aspa-verification])
+      When two directly connected ASes both advertise a full BGP table
+      to each other.  (See: [I-D.ietf-sidrops-aspa-verification])
 
    Upstream Provider / Transit Provider:
       In a direct relationship between two ASes the one announcing
@@ -454,22 +472,23 @@ Table of Contents
       the BGP protocol are neighbors.
 
    Peer:
-      A BGP neighbor, if not used to describe a relationship.
+      A BGP neighbor, if not used to describe the peering relationship.
 
    Prepending:
-      Inserting an ASes into the AS_PATH multiple times to influence
-      route selection.
+      Attaching ASes to the AS_PATH at the left hand side, possibly
+      multiple times, to influence route selection.
 
    Traffic Engineering:
       Making changes to properties of imported and exported NLRI to
       influence route selection, and thereby the flow of traffic.
 
    Converging:
-      Used to describe the process of a BGP speaker evaluating all
-      routes and finding the preferred route for each visible prefix.
-      Reconverging is often also used to describe an ongoing selection
-      process reevaluating all routes sent by neighbors, e.g., after a
-      loss of connectivity to one or multiple neighbors.
+      Used to describe the process of a BGP speaker learning and
+      evaluating all routes from its neighbors, and finding the
+      preferred route for each destination.  Reconverging is often also
+      used to describe an ongoing selection process reevaluating all
+      routes sent by neighbors, e.g., after a loss of connectivity to
+      one or multiple neighbors.
 
    Route Reflector:
       A Route Reflector is an iBGP speaker which sends all prefixes it
@@ -554,7 +573,7 @@ Table of Contents
       certificates and ROAs from from RPKI publication points, checks
       the signatures of the certificates and ROAs.
 
-   RTR Protocol
+   RPKI-RTR Protocol
       The RPKI to Router Protocol is used to communicate a validator's
       view on the RPKI to routers, providing and maintaining a list of
       certified prefixes and their allowed originating AS numbers.  RTR
@@ -594,8 +613,29 @@ Table of Contents
 7.2.  Informative References
 
    [RFC827]   Rosen, E., "Exterior Gateway Protocol (EGP)", RFC 827,
-              DOI 10.17487/RFC0827, October 1982,
+              DOI 10.17487/RFC827, October 1982,
               <https://www.rfc-editor.org/info/rfc827>.
+
+   [RFC1058]  Hedrick, C., "Routing Information Protocol", RFC 1058,
+              DOI 10.17487/RFC1058, June 1988,
+              <https://www.rfc-editor.org/info/rfc1058>.
+
+   [RFC1195]  Callon, R., "Use of OSI IS-IS for routing in TCP/IP and
+              dual environments", RFC 1195, DOI 10.17487/RFC1195,
+              December 1990, <https://www.rfc-editor.org/info/rfc1195>.
+
+   [RFC2328]  Moy, J., "OSPF Version 2", STD 54, RFC 2328,
+              DOI 10.17487/RFC2328, April 1998,
+              <https://www.rfc-editor.org/info/rfc2328>.
+
+   [RFC2385]  Heffernan, A., "Protection of BGP Sessions via the TCP MD5
+              Signature Option", RFC 2385, DOI 10.17487/RFC2385, August
+              1998, <https://www.rfc-editor.org/info/rfc2385>.
+
+   [RFC4271]  Rekhter, Y., Ed., Li, T., Ed., and S. Hares, Ed., "A
+              Border Gateway Protocol 4 (BGP-4)", RFC 4271,
+              DOI 10.17487/RFC4271, January 2006,
+              <https://www.rfc-editor.org/info/rfc4271>.
 
    [RFC5065]  Traina, P., McPherson, D., and J. Scudder, "Autonomous
               System Confederations for BGP", RFC 5065,
@@ -619,6 +659,10 @@ Table of Contents
    [RFC5883]  Katz, D. and D. Ward, "Bidirectional Forwarding Detection
               (BFD) for Multihop Paths", RFC 5883, DOI 10.17487/RFC5883,
               June 2010, <https://www.rfc-editor.org/info/rfc5883>.
+
+   [RFC5925]  Touch, J., Mankin, A., and R. Bonica, "The TCP
+              Authentication Option", RFC 5925, DOI 10.17487/RFC5925,
+              June 2010, <https://www.rfc-editor.org/info/rfc5925>.
 
    [RFC7454]  Durand, J., Pepelnjak, I., and G. Doering, "BGP Operations
               and Security", BCP 194, RFC 7454, DOI 10.17487/RFC7454,
