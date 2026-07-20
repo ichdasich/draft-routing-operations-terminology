@@ -43,7 +43,7 @@
 
         <abstract>
             <t>
-                Operating the global routing ecosystem entails a divers set of interacting components, while operational practice evolved over time.
+                Operating the global routing ecosystem entails a diverse set of interacting components, while operational practice evolved over time.
                 In that time, terms emerged, disappeared, and sometimes changed their meaning.
             </t>
             <t>
@@ -57,7 +57,7 @@
         <section  anchor="sec-introduction">
             <name>Introduction</name>
             <t>
-                The practical operation of the global routing ecosystem entails a divers set of interacting components, while operational practice evolved over time.
+                The practical operation of the global routing ecosystem entails a diverse set of interacting components, while operational practice evolved over time.
                 In that time, terms emerged, disappeared, and sometimes changed their meaning.
             </t>
             <t>
@@ -123,6 +123,9 @@
 
                 <dt>LIR:</dt>
                 <dd>Local Internet Registry</dd>
+
+                <dt>MPLS:</dt>
+                <dd>Multiprotocol Label Switching</dd>
 
                 <dt>NIR:</dt>
                 <dd>National Internet Registry</dd>
@@ -246,9 +249,8 @@
                     <dt>Cone:</dt>
                     <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
 
-		    <!-- XXX JMH - announced, or received? -->
                     <dt>Global Routing Table:</dt>
-                    <dd>The set of all routes for an address family that have been announced to external BGP Neighbors.</dd>
+                    <dd>The set of all routes for an address family that have been received from external BGP Neighbors.</dd>
 
                     <dt>Route Selection:</dt>
 		    <dd>The process when a BGP speaker applies the locally configured policy to select the best route from multiple available options according to that policy. See "Decision Process" in <xref target="RFC4271"/>.</dd>
@@ -266,7 +268,7 @@
                     <dd>The Transmission Control Protocol is part of the TCP/IP protocol stack. It is a connection oriented protocol taking care that everything which is sent is also received.</dd>
 
 		    <dt>TCP-AO:</dt>
-		    <dd>The Transmission Control Protocol Authentication Option <xref target="RFC5925"/> is used provide authentication and integrity for BGP.</dd>
+		    <dd>The Transmission Control Protocol Authentication Option <xref target="RFC5925"/> is used to provide authentication and integrity for BGP.</dd>
 
                     <dt>TCP-MD5:</dt>
 		    <dd>MD5 is a hashing algorithm, used to generate a checksum over given data. In the context of BGP, it typically refers to the obsolete TCP-MD5 feature <xref target="RFC2385"/>. It has been replaced by TCP-AO.</dd>
@@ -298,10 +300,10 @@
                     <dd>When two directly connected ASes both advertise a full BGP table to each other. (See: <xref target="I-D.ietf-sidrops-aspa-verification" format="default"/>)</dd>
 
                     <dt>Upstream Provider / Transit Provider:</dt>
-                    <dd>In a direct relationship between two ASes the one announcing either the full BGP routing table to the other or allowing the otherto point a default route to itself. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
+                    <dd>In a direct relationship between two ASes the one announcing either the full BGP routing table to the other or allowing the other to point a default route to itself. (See: <xref target="RFC9234" format="default"/>, also known as the provider in a customer-provider relationship.)</dd>
 
                     <dt>Downstream Customer:</dt>
-                    <dd>In a direct relationship between two ASes the one receiving a full BGP from the other or pointing a default route to the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
+                    <dd>In a direct relationship between two ASes the one receiving a full BGP table from the other or pointing a default route to the other. (See: <xref target="RFC9234" format="default"/>, also known as the customer in a customer-provider relationship.)</dd>
 
                     <dt>Peer:</dt>
                     <dd>Two directly connected ASes who only advertise routes they originate or learned from their downstreams to each other. (See: <xref target="RFC9234" format="default"/>)</dd>
@@ -313,13 +315,10 @@
                     <dd>See: Providing Transit</dd>
 
                     <dt>Provider (P) Router:</dt>
-                    <dd>A router with the core of a provider's network, usually implying the use of MPLS within the provider's network. Connected to other P and PE routers.</dd>
+                    <dd>A router within the core of a provider's network, usually implying the use of MPLS within the provider's network. Connected to other P and PE routers.</dd>
 
                     <dt>Provider Edge (PE) Router:</dt>
                     <dd>Like Network Edge, usually implying the use of MPLS within the provider's network. Connected to other PE, P, and CE routers.</dd>
-
-                    <dt>Providing Transit:</dt>
-                    <dd>Forwarding packets destined for addresses in an advertised prefix, while advertising a full BGP table or default route to the neighbor.</dd>
 
                     <dt>Depeering:</dt>
                     <dd>Removing sessions with a neighboring AS.</dd>
@@ -350,10 +349,10 @@
                     <dd>Last routers under the control of an operator.</dd>
 
                     <dt>Originating a Prefix:</dt>
-                    <dd>Inserting a prefix with an empty AS-Path into the BGP table of an operator. Once the prefix gets announced to neighboring ASes, the AS of the originating operator is added.</dd>
+                    <dd>Announcing a prefix with only your AS in the AS-Path.</dd>
 
                     <dt>Propagating a Prefix:</dt>
-                    <dd>Announcing a prefix with an non-empty AS-Path including other ASes than the announcing AS.</dd>
+                    <dd>Advertising a prefix you have received from another AS and adding your AS to the AS_PATH before announcing the prefix to further neighbors.</dd>
 
                     <dt>BGP Neighbor:</dt>
                     <dd>Also just 'Neighbor'. Two BGP speakers that exchange NLRI using the BGP protocol are neighbors.</dd>
@@ -375,7 +374,7 @@
                     <dd>A Route Reflector is an iBGP speaker which sends all prefixes it receives out to its Route Reflector Clients. It is a central component for network designs that do not use a full mesh for iBGP speakers.</dd>
 
                     <dt>Route Reflector Client:</dt>
-                    <dd>A Route Reflector CLient an iBGP speaking node with usually only one iBGP connection to a Route Reflector.</dd>
+                    <dd>A Route Reflector CLient is an iBGP speaking node with usually only one iBGP connection to a Route Reflector.</dd>
 
                     <dt>Default Route:</dt>
                     <dd>The default route is a route which covers every destination for which there is no specific route in the routing table. The destination of the default-route is often called the default destination or the gateway of last resort.</dd>
@@ -384,10 +383,16 @@
                     <dd>As a general term, blackholing refers to packets silently being dropped, i.e., without the sender being notified via an ICMP or ICMP6 message. For the additional meaning in the context of network security, please see below.</dd>
 
                     <dt>Multi Exit Discriminator:</dt>
-                    <dd>MED is a metric in BGP which is used to signal neighbor to which an AS has multiple links via which path inbound traffic for a prefix is preferred.</dd>
+                    <dd>MED is a metric in BGP which is used to signal neighboring ASes with multiple entry points to the network which inbound traffic path for a prefix is preferred.</dd>
 
                     <dt>Local Preference:</dt>
-                    <dd>The local preference is the first evaluated BGP Attribute in best path selection selection process when comparing multiple NLRI for the same prefix. It is an integer value, and NLRI with a higher local preference will be preferred. It is redistributed via iBGP inside an Autonomous System}</dd>
+                    <dd>The local preference is the first evaluated BGP Attribute in the best path selection process when comparing multiple NLRI for the same prefix. It is an integer value, and NLRI with a higher local preference will be preferred. It is redistributed via iBGP inside an Autonomous System}</dd>
+
+                    <dt>MPLS:</dt>
+		    <dd>Multiprotocol Label Switching is a procedure to make routing decisions faster. When a packet enters a network it will get a label attached signaling which route it should take to its destination and which priority it has.</dd>
+
+                    <dt>L2VPN:</dt>
+		    <dd>A Layer 2 Virtual Private Network connects two physically distant networks in a way that makes them appear to be one. Packets between hosts in those 2 connected networks can communicate as if on the same layer 2 network via switching.</dd>
 
                     <dt>Router:</dt>
                     <dd>Generally a term for a system forwarding network traffic on Layer 3. In the context of BGP, this usually refers to a BGP speaker.</dd>
@@ -409,7 +414,7 @@
                     <dd>When an AS announces a route it is not authorized to announce without malicious intent.</dd>
 
                     <dt>Update Storm:</dt>
-                    <dd>A continuous high volume stream of BGP Updates send to one or multiple neighbors.</dd>
+                    <dd>A continuous high volume stream of BGP Updates sent to one or multiple neighbors.</dd>
 
                     <dt>Cascading Update Storm:</dt>
                     <dd>When an update storm traverses beyond directly connected neighbors.</dd>
