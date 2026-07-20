@@ -5,8 +5,8 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                       TUW
 Intended status: Informational                                W. Tremmel
-Expires: 19 January 2027                                          DE-CIX
-                                                            18 July 2026
+Expires: 21 January 2027                                          DE-CIX
+                                                            20 July 2026
 
 
         Currently Used Terminology in Global Routing Operations
@@ -14,7 +14,7 @@ Expires: 19 January 2027                                          DE-CIX
 
 Abstract
 
-   Operating the global routing ecosystem entails a divers set of
+   Operating the global routing ecosystem entails a diverse set of
    interacting components, while operational practice evolved over time.
    In that time, terms emerged, disappeared, and sometimes changed their
    meaning.
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 January 2027.
+   This Internet-Draft will expire on 21 January 2027.
 
 Copyright Notice
 
@@ -79,7 +79,7 @@ Table of Contents
 1.  Introduction
 
    The practical operation of the global routing ecosystem entails a
-   divers set of interacting components, while operational practice
+   diverse set of interacting components, while operational practice
    evolved over time.  In that time, terms emerged, disappeared, and
    sometimes changed their meaning.
 
@@ -143,6 +143,9 @@ Table of Contents
 
    LIR:
       Local Internet Registry
+
+   MPLS:
+      Multiprotocol Label Switching
 
    NIR:
       National Internet Registry
@@ -322,7 +325,7 @@ Table of Contents
 
    Global Routing Table:
       The set of all routes for an address family that have been
-      announced to external BGP Neighbors.
+      received from external BGP Neighbors.
 
    Route Selection:
       The process when a BGP speaker applies the locally configured
@@ -348,7 +351,7 @@ Table of Contents
 
    TCP-AO:
       The Transmission Control Protocol Authentication Option [RFC5925]
-      is used provide authentication and integrity for BGP.
+      is used to provide authentication and integrity for BGP.
 
    TCP-MD5:
       MD5 is a hashing algorithm, used to generate a checksum over given
@@ -393,12 +396,12 @@ Table of Contents
    Upstream Provider / Transit Provider:
       In a direct relationship between two ASes the one announcing
       either the full BGP routing table to the other or allowing the
-      otherto point a default route to itself.  (See: [RFC9234], also
+      other to point a default route to itself.  (See: [RFC9234], also
       known as the provider in a customer-provider relationship.)
 
    Downstream Customer:
       In a direct relationship between two ASes the one receiving a full
-      BGP from the other or pointing a default route to the other.
+      BGP table from the other or pointing a default route to the other.
       (See: [RFC9234], also known as the customer in a customer-provider
       relationship.)
 
@@ -416,18 +419,13 @@ Table of Contents
       See: Providing Transit
 
    Provider (P) Router:
-      A router with the core of a provider's network, usually implying
+      A router within the core of a provider's network, usually implying
       the use of MPLS within the provider's network.  Connected to other
       P and PE routers.
 
    Provider Edge (PE) Router:
       Like Network Edge, usually implying the use of MPLS within the
       provider's network.  Connected to other PE, P, and CE routers.
-
-   Providing Transit:
-      Forwarding packets destined for addresses in an advertised prefix,
-      while advertising a full BGP table or default route to the
-      neighbor.
 
    Depeering:
       Removing sessions with a neighboring AS.
@@ -459,13 +457,12 @@ Table of Contents
       Last routers under the control of an operator.
 
    Originating a Prefix:
-      Inserting a prefix with an empty AS-Path into the BGP table of an
-      operator.  Once the prefix gets announced to neighboring ASes, the
-      AS of the originating operator is added.
+      Announcing a prefix with only your AS in the AS-Path.
 
    Propagating a Prefix:
-      Announcing a prefix with an non-empty AS-Path including other ASes
-      than the announcing AS.
+      Advertising a prefix you have received from another AS and adding
+      your AS to the AS_PATH before announcing the prefix to further
+      neighbors.
 
    BGP Neighbor:
       Also just 'Neighbor'.  Two BGP speakers that exchange NLRI using
@@ -497,8 +494,8 @@ Table of Contents
       speakers.
 
    Route Reflector Client:
-      A Route Reflector CLient an iBGP speaking node with usually only
-      one iBGP connection to a Route Reflector.
+      A Route Reflector CLient is an iBGP speaking node with usually
+      only one iBGP connection to a Route Reflector.
 
    Default Route:
       The default route is a route which covers every destination for
@@ -513,16 +510,28 @@ Table of Contents
       network security, please see below.
 
    Multi Exit Discriminator:
-      MED is a metric in BGP which is used to signal neighbor to which
-      an AS has multiple links via which path inbound traffic for a
-      prefix is preferred.
+      MED is a metric in BGP which is used to signal neighboring ASes
+      with multiple entry points to the network which inbound traffic
+      path for a prefix is preferred.
 
    Local Preference:
-      The local preference is the first evaluated BGP Attribute in best
-      path selection selection process when comparing multiple NLRI for
-      the same prefix.  It is an integer value, and NLRI with a higher
-      local preference will be preferred.  It is redistributed via iBGP
-      inside an Autonomous System}
+      The local preference is the first evaluated BGP Attribute in the
+      best path selection process when comparing multiple NLRI for the
+      same prefix.  It is an integer value, and NLRI with a higher local
+      preference will be preferred.  It is redistributed via iBGP inside
+      an Autonomous System}
+
+   MPLS:
+      Multiprotocol Label Switching is a procedure to make routing
+      decisions faster.  When a packet enters a network it will get a
+      label attached signaling which route it should take to its
+      destination and which priority it has.
+
+   L2VPN:
+      A Layer 2 Virtual Private Network connects two physically distant
+      networks in a way that makes them appear to be one.  Packets
+      between hosts in those 2 connected networks can communicate as if
+      on the same layer 2 network via switching.
 
    Router:
       Generally a term for a system forwarding network traffic on Layer
@@ -545,7 +554,7 @@ Table of Contents
       without malicious intent.
 
    Update Storm:
-      A continuous high volume stream of BGP Updates send to one or
+      A continuous high volume stream of BGP Updates sent to one or
       multiple neighbors.
 
    Cascading Update Storm:
