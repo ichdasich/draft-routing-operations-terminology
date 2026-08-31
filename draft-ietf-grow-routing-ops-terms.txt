@@ -5,8 +5,8 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                       TUW
 Intended status: Informational                                W. Tremmel
-Expires: 21 January 2027                                          DE-CIX
-                                                            20 July 2026
+Expires: 4 March 2027                                             DE-CIX
+                                                          31 August 2026
 
 
         Currently Used Terminology in Global Routing Operations
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 January 2027.
+   This Internet-Draft will expire on 4 March 2027.
 
 Copyright Notice
 
@@ -188,7 +188,7 @@ Table of Contents
    This section describes terms used in the context of global routing
    operations, grouped by topic.  Terms may have a different meaning
    depending on the context in which they are used.  Hence, terms may
-   appear in multiple subsections with different descriptions..
+   appear in multiple subsections with different descriptions.
 
 4.1.  General Terms
 
@@ -218,7 +218,7 @@ Table of Contents
       is about the general application of BFD and [RFC5883] describes
       BFD on multihop paths.
 
-   BGP
+   BGP:
       Border Gateway Protocol, Version 4 [RFC4271].  BGP is the routing
       protocol used for Internet (IPv4 and IPv6) routing.  It is also
       used by many other applications.
@@ -246,18 +246,18 @@ Table of Contents
    Optional non-transitive BGP Path Attribute:
       Optional non-transitive BGP Path Attributes are conditionally
       carried in BGP routes based on their defining feature.
-      Impelementations that do not understand an optional non-transitive
+      Implementations that do not understand an optional non-transitive
       Path Attribute will discard them and they are not propagated to
       their neighbors as a result.
 
    Enhanced Interior Gateway Routing Protocol:
-      EIGRP is a IGP defined by Cisco in the 1980s to distribute routing
-      information within a network.  It was later openly specified in
-      [RFC7868].
+      EIGRP is an IGP defined by Cisco in the 1980s to distribute
+      routing information within a network.  It was later openly
+      specified in [RFC7868].
 
    Exterior Gateway Protocol:
-      EGP was a predecessor to BGP.  First defined 1982 in [RFC827] it
-      became obsolete once BGP was widely used (around 1994).
+      EGP was a predecessor to BGP.  First defined in 1982 in [RFC827],
+      it became obsolete once BGP was widely used (around 1994).
       Additionally, as a general term, it is used for protocols used to
       exchange routing information between ASes.  In that meaning, BGP
       is currently the only EGP.
@@ -275,7 +275,7 @@ Table of Contents
       in the IETF in [RFC1195].
 
    Local Internet Registry:
-      An LIR is an organzation/company which receives IP address
+      An LIR is an organization/company which receives IP address
       resources or Autonomous System Numbers as an allocation from a
       Regional Internet Registry and assigns these resources to end
       users.
@@ -285,9 +285,9 @@ Table of Contents
       was first specified in [RFC2328].
 
    Regional Internet Registry:
-      A RIR is an entity responsible for allocating IP addresses and AS
+      An RIR is an entity responsible for allocating IP addresses and AS
       numbers to NIRs and LIRs.  There are currently five RIRs: Afrinic,
-      APNIC, ARIN, LACNIC, and RIPE NCC.  Each are responsible for a
+      APNIC, ARIN, LACNIC, and RIPE NCC.  Each is responsible for a
       different region.
 
    Routing Information Protocol:
@@ -296,9 +296,9 @@ Table of Contents
       originally defined in [RFC1058].
 
    RIPE:
-      Is shorthand for Réseaux IP Européens, which is the community of
-      network operators in the RIPE NCC's service region.  See also RIPE
-      NCC.
+      RIPE is shorthand for Réseaux IP Européens, which is the community
+      of network operators in the RIPE NCC's service region.  See also
+      RIPE NCC.
 
    RIPE NCC:
       The RIPE NCC, sometimes also just called the NCC, is the RIR for
@@ -319,7 +319,7 @@ Table of Contents
 
    Cone:
       The set of ASes who are either direct downstreams of an AS, or in
-      the cone of any of those ASes; Depending on the context this also
+      the cone of any of those ASes.  Depending on the context this also
       includes the joint set of prefixes that may be originated by ASes
       in a cone.
 
@@ -440,7 +440,7 @@ Table of Contents
 
    BGP Speaker:
       A device exchanging routes with other BGP speakers using the BGP
-      protocol
+      protocol.
 
    Full Table:
       A routing table containing a route to all prefixes in the GRT but
@@ -542,7 +542,7 @@ Table of Contents
    This section describes terms used in the context of routing security.
 
    Route Flapping:
-      A route that is constantly announced and widthdrawn or otherwise
+      A route that is constantly announced and withdrawn or otherwise
       sees constant change.
 
    BGP Hijack / Route Hijack:
@@ -579,10 +579,10 @@ Table of Contents
 
    RPKI validator:
       An RPKI validator is a piece of software that fetches RPKI
-      certificates and ROAs from from RPKI publication points, checks
-      the signatures of the certificates and ROAs.
+      certificates and ROAs from RPKI publication points, checks the
+      signatures of the certificates and ROAs.
 
-   RPKI-RTR Protocol
+   RPKI-RTR Protocol:
       The RPKI to Router Protocol is used to communicate a validator's
       view on the RPKI to routers, providing and maintaining a list of
       certified prefixes and their allowed originating AS numbers.  RTR
