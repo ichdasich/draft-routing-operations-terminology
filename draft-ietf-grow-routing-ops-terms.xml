@@ -169,7 +169,7 @@
             <t>
                 This section describes terms used in the context of global routing operations, grouped by topic.
                 Terms may have a different meaning depending on the context in which they are used.
-                Hence, terms may appear in multiple subsections with different descriptions..
+                Hence, terms may appear in multiple subsections with different descriptions.
             </t>
             <section  anchor="sec-terms-general">
                 <name>General Terms</name>
@@ -189,7 +189,7 @@
                     <dt>Bidirectional Forwarding Detection:</dt>
                     <dd>BFD is a protocol used by BGP to check if a configured neighbor is reachable. Packets are sent rapidly between two systems (rapidly means in the 100ms time range). If no packets are received from the neighbor for a given time, the neighbor is considered to be no longer reachable. This lack of reachability is then signaled to other protocols like BGP. BFD is defined in <xref target="RFC5880" format="default"/>. Its application for IPv4 and IPv6 is defined in <xref target="RFC5881" format="default"/>. <xref target="RFC5882" format="default"/> is about the general application of BFD and <xref target="RFC5883" format="default"/> describes BFD on multihop paths.</dd>
 
-		    <dt>BGP</dt>
+		    <dt>BGP:</dt>
 		    <dd>Border Gateway Protocol, Version 4 <xref target="RFC4271"/>.  BGP is the routing protocol used for Internet (IPv4 and IPv6) routing.  It is also used by many other applications.</dd>
 
                     <dt>BGP Path Attribute:</dt>
@@ -205,13 +205,13 @@
                     <dd>Optional transitive BGP Path Attributes are conditionally carried in BGP routes based on their defining feature.  Implementations that do not understand an optional transitive Path Attribute are expected to propagate the attribute to their neighbors.</dd>
 
                     <dt>Optional non-transitive BGP Path Attribute:</dt>
-                    <dd>Optional non-transitive BGP Path Attributes are conditionally carried in BGP routes based on their defining feature.  Impelementations that do not understand an optional non-transitive Path Attribute will discard them and they are not propagated to their neighbors as a result.</dd>
+                    <dd>Optional non-transitive BGP Path Attributes are conditionally carried in BGP routes based on their defining feature.  Implementations that do not understand an optional non-transitive Path Attribute will discard them and they are not propagated to their neighbors as a result.</dd>
 
                     <dt>Enhanced Interior Gateway Routing Protocol:</dt>
-                    <dd>EIGRP is a IGP defined by Cisco in the 1980s to distribute routing information within a network. It was later openly specified in <xref target="RFC7868" format="default"/>.</dd>
+                    <dd>EIGRP is an IGP defined by Cisco in the 1980s to distribute routing information within a network. It was later openly specified in <xref target="RFC7868" format="default"/>.</dd>
 
                     <dt>Exterior Gateway Protocol:</dt>
-                    <dd>EGP was a predecessor to BGP. First defined 1982 in <xref target="RFC827" format="default"/> it became obsolete once BGP was widely used (around 1994). Additionally, as a general term, it is used for protocols used to exchange routing information between ASes. In that meaning, BGP is currently the only EGP.</dd>
+                    <dd>EGP was a predecessor to BGP. First defined in 1982 in <xref target="RFC827" format="default"/>, it became obsolete once BGP was widely used (around 1994). Additionally, as a general term, it is used for protocols used to exchange routing information between ASes. In that meaning, BGP is currently the only EGP.</dd>
 
                     <dt>Interior Gateway Protocol:</dt>
                     <dd>An IGP is a protocol running inside an Autonomous System. It is typically used to distribute the IP addresses of router interfaces.</dd>
@@ -220,19 +220,19 @@
 		    <dd>The Intermediate System to Intermediate System protocol is an IGP running directly on top of layer 2. It is typically used to distribute interface addresses within a network.  IS-IS was originally defined by OSI in ISO DP 10589.  It was later published in the IETF in <xref target="RFC1195"/>.</dd>
 
                     <dt>Local Internet Registry:</dt>
-                    <dd>An LIR is an organzation/company which receives IP address resources or Autonomous System Numbers as an allocation from a Regional Internet Registry and assigns these resources to end users.</dd>
+                    <dd>An LIR is an organization/company which receives IP address resources or Autonomous System Numbers as an allocation from a Regional Internet Registry and assigns these resources to end users.</dd>
 
                     <dt>Open Shortest Path First:</dt>
 		    <dd>OSPF is a link state routing protocol. It is used as an IGP. It was first specified in <xref target="RFC2328"/>.</dd>
 
                     <dt>Regional Internet Registry:</dt>
-                    <dd>A RIR is an entity responsible for allocating IP addresses and AS numbers to NIRs and LIRs. There are currently five RIRs: Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC. Each are responsible for a different region.</dd>
+                    <dd>An RIR is an entity responsible for allocating IP addresses and AS numbers to NIRs and LIRs. There are currently five RIRs: Afrinic, APNIC, ARIN, LACNIC, and RIPE NCC. Each is responsible for a different region.</dd>
 
                     <dt>Routing Information Protocol:</dt>
 		    <dd>RIP is an old and by now obsolete protocol which was used to distribute routing information. RIP is no longer in use. It was originally defined in <xref target="RFC1058"/>.</dd>
 
                     <dt>RIPE:</dt>
-                    <dd>Is shorthand for Réseaux IP Européens, which is the community of network operators in the RIPE NCC's service region. See also RIPE NCC.</dd>
+                    <dd>RIPE is shorthand for Réseaux IP Européens, which is the community of network operators in the RIPE NCC's service region. See also RIPE NCC.</dd>
 
                     <dt>RIPE NCC:</dt>
                     <dd>The RIPE NCC, sometimes also just called the NCC, is the RIR for 75 countries spanning Europe, parts of central Asia, and the Middle East.</dd>
@@ -247,7 +247,7 @@
                     <dd>Router at the customer's premises, may be connected to PE routers.</dd>
 
                     <dt>Cone:</dt>
-                    <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes; Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
+                    <dd>The set of ASes who are either direct downstreams of an AS, or in the cone of any of those ASes. Depending on the context this also includes the joint set of prefixes that may be originated by ASes in a cone.</dd>
 
                     <dt>Global Routing Table:</dt>
                     <dd>The set of all routes for an address family that have been received from external BGP Neighbors.</dd>
@@ -334,7 +334,7 @@
                 </t>
                 <dl newline="true" spacing="normal">
                     <dt>BGP Speaker:</dt>
-                    <dd>A device exchanging routes with other BGP speakers using the BGP protocol</dd>
+                    <dd>A device exchanging routes with other BGP speakers using the BGP protocol.</dd>
 
                     <dt>Full Table:</dt>
                     <dd>A routing table containing a route to all prefixes in the GRT but not the default route.</dd>
@@ -405,7 +405,7 @@
                 </t>
                 <dl newline="true" spacing="normal">
                     <dt>Route Flapping:</dt>
-                    <dd>A route that is constantly announced and widthdrawn or otherwise sees constant change.</dd>
+                    <dd>A route that is constantly announced and withdrawn or otherwise sees constant change.</dd>
 
                     <dt>BGP Hijack / Route Hijack:</dt>
                     <dd>A route hijack occurs when an AS announces a route that it is not authorized to announce, causing traffic to be diverted from its intended route or destination. A route hijack may result from either accidental misconfiguration or malicious action.</dd>
@@ -429,9 +429,9 @@
                     <dd>Resource Public Key Infrastructure represents the allocation hierarchy of IP address space and Autonomous System numbers and supports cryptographically verifiable statements about Internet number resources and their use. (See <xref target="RFC6480" format="default"/>.)</dd>
 
                     <dt>RPKI validator:</dt>
-                    <dd>An RPKI validator is a piece of software that fetches RPKI certificates and RPKI signed objects from from RPKI publication points, checks the signatures of the certificates and signed objects.</dd>
+                    <dd>An RPKI validator is a piece of software that fetches RPKI certificates and ROAs from RPKI publication points, checks the signatures of the certificates and ROAs.</dd>
 
-                    <dt>RPKI-RTR Protocol</dt>
+                    <dt>RPKI-RTR Protocol:</dt>
                     <dd>The RPKI to Router Protocol is used to communicate a validator's view on the RPKI to routers, providing and maintaining a list of certified prefixes and their allowed originating AS numbers. RTR may be an independent daemon, or can also be integrated in an RPKI validator.</dd>
 
                     <dt>DDOS:</dt>
