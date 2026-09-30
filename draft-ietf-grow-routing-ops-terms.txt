@@ -5,8 +5,8 @@
 Global Routing Operations                                      T. Fiebig
 Internet-Draft                                                       TUW
 Intended status: Informational                                W. Tremmel
-Expires: 4 March 2027                                             DE-CIX
-                                                          31 August 2026
+Expires: 3 April 2027                                             DE-CIX
+                                                       30 September 2026
 
 
         Currently Used Terminology in Global Routing Operations
@@ -40,7 +40,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 4 March 2027.
+   This Internet-Draft will expire on 3 April 2027.
 
 Copyright Notice
 
@@ -126,14 +126,26 @@ Table of Contents
    BGP:
       Border Gateway Protocol
 
+   ASPA:
+      Autonomous System Provider Authorization
+
+   BFD:
+      Bidirectional Forwarding Detection
+
    CE:
       Customer Edge Router
 
    DFZ:
       Default Free Zone
 
+   EIGRP:
+      Enhanced Interior Gateway Routing Protocol
+
    GRT:
       Global Routing Table
+
+   IGP:
+      Interior Gateway Protocol
 
    IRR:
       Internet Routing Registry
