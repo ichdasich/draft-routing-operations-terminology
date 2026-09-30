@@ -106,14 +106,26 @@
 		<dt>BGP:</dt>
 		<dd>Border Gateway Protocol</dd>
 
+                <dt>ASPA:</dt>
+                <dd>Autonomous System Provider Authorization</dd>
+
+                <dt>BFD:</dt>
+                <dd>Bidirectional Forwarding Detection</dd>
+
                 <dt>CE:</dt>
                 <dd>Customer Edge Router</dd>
 
                 <dt>DFZ:</dt>
                 <dd>Default Free Zone</dd>
 
+                <dt>EIGRP:</dt>
+                <dd>Enhanced Interior Gateway Routing Protocol</dd>
+
                 <dt>GRT:</dt>
                 <dd>Global Routing Table</dd>
+
+                <dt>IGP:</dt>
+                <dd>Interior Gateway Protocol</dd>
 
                 <dt>IRR:</dt>
                 <dd>Internet Routing Registry</dd>
