@@ -138,11 +138,17 @@ Table of Contents
    DFZ:
       Default Free Zone
 
+   EGP:
+      Exterior Gateway Protocol
+
    EIGRP:
       Enhanced Interior Gateway Routing Protocol
 
    GRT:
       Global Routing Table
+
+   ICMP:
+      Internet Control Message Protocol
 
    IGP:
       Interior Gateway Protocol
@@ -156,11 +162,17 @@ Table of Contents
    LIR:
       Local Internet Registry
 
+   MED:
+      Multi Exit Discriminator
+
    MPLS:
       Multiprotocol Label Switching
 
    NIR:
       National Internet Registry
+
+   OSPF:
+      Open Shortest Path First
 
    RIR:
       Regional Internet Registry
