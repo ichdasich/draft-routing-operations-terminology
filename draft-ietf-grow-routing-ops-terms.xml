@@ -118,11 +118,17 @@
                 <dt>DFZ:</dt>
                 <dd>Default Free Zone</dd>
 
+                <dt>EGP:</dt>
+                <dd>Exterior Gateway Protocol</dd>
+
                 <dt>EIGRP:</dt>
                 <dd>Enhanced Interior Gateway Routing Protocol</dd>
 
                 <dt>GRT:</dt>
                 <dd>Global Routing Table</dd>
+
+                <dt>ICMP:</dt>
+                <dd>Internet Control Message Protocol</dd>
 
                 <dt>IGP:</dt>
                 <dd>Interior Gateway Protocol</dd>
@@ -136,11 +142,17 @@
                 <dt>LIR:</dt>
                 <dd>Local Internet Registry</dd>
 
+                <dt>MED:</dt>
+                <dd>Multi Exit Discriminator</dd>
+
                 <dt>MPLS:</dt>
                 <dd>Multiprotocol Label Switching</dd>
 
                 <dt>NIR:</dt>
                 <dd>National Internet Registry</dd>
+
+                <dt>OSPF:</dt>
+                <dd>Open Shortest Path First</dd>
 
                 <dt>RIR:</dt>
                 <dd>Regional Internet Registry</dd>
